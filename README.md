@@ -1,2 +1,2 @@
-# OpenAIWork2025
+# OpenAI_Codex_MKoehler
 Arbeitsverzeichnis für OpenAI Codex
