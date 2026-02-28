@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ever2obsidian"
+version = "0.1.0"
+description = "Transform Evernote-exported Markdown into Obsidian-ready notes"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "OpenAI Codex" }]
+dependencies = []
+
+[project.scripts]
+ever2obsidian = "ever2obsidian.cli:main"
+evernote2obsidian = "ever2obsidian.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
