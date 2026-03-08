@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
-"""Hyperion-inspirierte Wirtschaftssimulation (systemisch, ohne Story-Textkopien)."""
+"""Hyperion-inspirierte Wirtschaftssimulation als Python-Textanwendung.
+
+Ziel: Läuft als reine Konsoleingabe/-ausgabe auch in Pythonista (iPad).
+"""
 
 from __future__ import annotations
 
 import argparse
 import random
+import sys
 from dataclasses import dataclass, field
 from typing import Dict, List, Tuple
-
 
 GOOD_DATA: Dict[str, Dict[str, float]] = {
     "nahrung": {"base_price": 28, "volatility": 0.14, "strategic": 0.7},
@@ -245,9 +248,7 @@ class HyperionEconomySim:
             for buyer, deficit in importers:
                 remaining = deficit
                 for idx, (seller, surplus) in enumerate(exporters):
-                    if remaining <= 0.1 or surplus <= 0.1:
-                        continue
-                    if seller is buyer:
+                    if remaining <= 0.1 or surplus <= 0.1 or seller is buyer:
                         continue
                     unit_cost, time_debt = self._transport_cost(seller, buyer, mods)
                     margin = buyer.prices[good] - (seller.prices[good] + unit_cost)
@@ -255,21 +256,15 @@ class HyperionEconomySim:
                         continue
 
                     qty = min(surplus, remaining, route_capacity)
-                    if qty <= 0:
-                        continue
-
                     seller.stock[good] -= qty
                     buyer.stock[good] += qty
-                    sale_price = seller.prices[good]
                     seller.prosperity = min(1.4, seller.prosperity + 0.004 * qty)
                     buyer.prosperity = min(1.4, buyer.prosperity + 0.003 * qty)
                     buyer.time_debt += qty * time_debt
 
                     exporters[idx] = (seller, surplus - qty)
                     remaining -= qty
-                    self.trade_log.append(
-                        f"{good}: {seller.name} -> {buyer.name} ({qty:.1f} u, kosten {unit_cost:.1f})"
-                    )
+                    self.trade_log.append(f"{good}: {seller.name} -> {buyer.name} ({qty:.1f} u, kosten {unit_cost:.1f})")
 
     def _post_tick_updates(self) -> None:
         for world in self.worlds:
@@ -313,7 +308,13 @@ class HyperionEconomySim:
         lines = [
             f"\n=== Tick {self.tick} ===",
             f"Aktive Ereignisse: {', '.join(self.current_events) if self.current_events else 'keine'}",
-            f"Fraktionen: Hegemonie={self.faction_state['hegemony_control']:.2f} | Core-Signal={self.faction_state['core_signal']:.2f} | Ouster-Druck={self.faction_state['ouster_threat']:.2f} | Templar-Zugang={self.faction_state['templar_access']:.2f}",
+            (
+                "Fraktionen: "
+                f"Hegemonie={self.faction_state['hegemony_control']:.2f} | "
+                f"Core-Signal={self.faction_state['core_signal']:.2f} | "
+                f"Ouster-Druck={self.faction_state['ouster_threat']:.2f} | "
+                f"Templar-Zugang={self.faction_state['templar_access']:.2f}"
+            ),
             "Top-Preise:",
         ]
         for good, price, world_name in top_prices[:5]:
@@ -321,7 +322,10 @@ class HyperionEconomySim:
 
         lines.append("Reichste/Prosperierende Welten:")
         for w in richest:
-            lines.append(f"  - {w.name:12s} Wohlstand={w.prosperity:.2f} Stabilität={w.stability:.2f} TimeDebt={w.time_debt:.1f}")
+            lines.append(
+                f"  - {w.name:12s} Wohlstand={w.prosperity:.2f} "
+                f"Stabilität={w.stability:.2f} TimeDebt={w.time_debt:.1f}"
+            )
 
         lines.append("Stabilste Welten:")
         for w in stable:
@@ -338,10 +342,52 @@ class HyperionEconomySim:
                 lines.append(f"  - {entry}")
         return "\n".join(lines)
 
+    def world_table(self) -> str:
+        lines = ["\nWELTENSTATUS", "Name         Typ          Faction      Stab   Wohlst TimeDebt Farcaster"]
+        for w in self.worlds:
+            far = "ja" if w.farcaster else "nein"
+            lines.append(
+                f"{w.name:12s} {w.category[:12]:12s} {w.faction[:11]:11s} "
+                f"{w.stability:>5.2f}  {w.prosperity:>5.2f}   {w.time_debt:>6.1f}   {far:>3s}"
+            )
+        return "\n".join(lines)
+
     def run(self) -> None:
         for _ in range(self.config.ticks):
             self.step()
             print(self.summary())
+
+
+class TextApp:
+    """Interaktive Konsole, kompatibel mit Pythonista (print/input)."""
+
+    def __init__(self, config: SimulationConfig):
+        self.sim = HyperionEconomySim(config)
+
+    @staticmethod
+    def _ask_int(prompt: str, default: int) -> int:
+        raw = input(f"{prompt} [{default}]: ").strip()
+        return default if not raw else int(raw)
+
+    def interactive_loop(self) -> None:
+        print("Hyperion Economy - Textanwendung")
+        print("Befehle: n=1 Tick, r=mehrere Ticks, w=Weltenstatus, q=beenden")
+        while True:
+            cmd = input("\nBefehl (n/r/w/q): ").strip().lower() or "n"
+            if cmd == "q":
+                print("Simulation beendet.")
+                return
+            if cmd == "w":
+                print(self.sim.world_table())
+                continue
+            if cmd == "r":
+                count = self._ask_int("Wie viele Ticks?", 5)
+                for _ in range(max(1, count)):
+                    self.sim.step()
+                    print(self.sim.summary())
+                continue
+            self.sim.step()
+            print(self.sim.summary())
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -351,6 +397,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--event-chance", type=float, default=0.45, help="Wahrscheinlichkeit pro Tick für Ereignisse")
     parser.add_argument("--trade-intensity", type=float, default=1.0, help="Handelsintensität")
     parser.add_argument("--faction-strength", type=float, default=1.0, help="Stärke politischer Fraktionseffekte")
+    parser.add_argument("--interactive", action="store_true", help="Interaktive Textanwendung starten")
     return parser
 
 
@@ -363,7 +410,12 @@ def main() -> None:
         trade_intensity=args.trade_intensity,
         faction_strength=args.faction_strength,
     )
-    HyperionEconomySim(config).run()
+
+    # Ohne Parameter (typisch Pythonista 'Run') automatisch interaktiv starten.
+    if args.interactive or len(sys.argv) == 1:
+        TextApp(config).interactive_loop()
+    else:
+        HyperionEconomySim(config).run()
 
 
 if __name__ == "__main__":

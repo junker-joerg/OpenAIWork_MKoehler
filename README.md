@@ -2,18 +2,18 @@
 
 Arbeitsverzeichnis für OpenAI Codex.
 
-## Hyperion-inspirierte Wirtschaftssimulation (neu)
+## Hyperion-inspirierte Wirtschaftssimulation (Textanwendung)
 
-Eine kleine, tick-basierte Interstellar-Ökonomie mit Fokus auf:
+Die Simulation ist jetzt als **reine Textanwendung (print/input)** ausgelegt und läuft dadurch auch in **Pythonista auf dem iPad**.
 
-- Hegemonie/Kernwelten vs. Peripherie
-- Farcaster-Netz als Niedrigfriktions-Infrastruktur
-- TechnoCore-Einfluss (Signale, Gebühren, Prognosefehler/Optimierung)
-- Ouster-Risiko auf Randrouten
-- Templar-Weltenbaum-Sonderkorridor
-- Hyperion als asymmetrische Sonderwelt (Pilgerdruck, Relikte, Risiko)
-- Time-Debt-Effekte für nicht-farcaster-basierte Logistik
-- Exogene Schocks (Sanktionen, Aufstände, Farcaster-Störungen usw.)
+Enthaltene Systemelemente:
+
+- Hegemonie, TechnoCore, Ousters, Templars als Fraktionsdruck
+- Kernwelten vs. Peripherie- und Grenzwelten
+- Farcaster-Infrastruktur vs. konventionelle Routen
+- Time-Debt-Effekte außerhalb des Farcaster-Netzes
+- Hyperion als Sonderwelt (hohe Unsicherheit, Pilgerdruck, Reliktökonomie)
+- Ereignisse: Farcaster-Störung, Ouster-Raid, Sanktionen, Pilgerboom, Aufstand, Core-Schocks, Templar-Korridor
 
 ### Implementierungsplan (kurz)
 
@@ -21,9 +21,24 @@ Eine kleine, tick-basierte Interstellar-Ökonomie mit Fokus auf:
 2. Produktion/Konsum und preisgetriebene Engpässe pro Tick berechnen.
 3. Handelsheuristik mit Transportkosten, Time Debt und Fraktionsmodifikatoren anwenden.
 4. Event-System für politische/technologische Schocks pro Tick integrieren.
-5. CLI-Summary mit Top-Preisen, Engpässen, Fraktionslage und Handelslog ausgeben.
+5. Textausgabe pro Tick mit Preisen, Engpässen, Fraktionslage und Handelslog bereitstellen.
 
 ### Start
+
+#### Pythonista / interaktiv
+
+```bash
+python3 hyperion_economy.py
+```
+
+Bei Start ohne Parameter läuft die interaktive Textanwendung:
+
+- `n`: 1 Tick weiter
+- `r`: mehrere Ticks laufen lassen
+- `w`: Weltenstatus anzeigen
+- `q`: beenden
+
+#### Nicht-interaktiv (Batch-Lauf)
 
 ```bash
 python3 hyperion_economy.py --ticks 12 --seed 7
@@ -34,6 +49,7 @@ Optionen:
 - `--event-chance` (Standard: `0.45`)
 - `--trade-intensity` (Standard: `1.0`)
 - `--faction-strength` (Standard: `1.0`)
+- `--interactive` (erzwingt Interaktivmodus)
 
 ### Tests
 

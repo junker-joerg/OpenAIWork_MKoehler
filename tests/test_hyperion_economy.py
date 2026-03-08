@@ -34,6 +34,12 @@ class HyperionEconomyTests(unittest.TestCase):
         self.assertIn("Größte Engpässe", text)
         self.assertIn("Fraktionen", text)
 
+    def test_world_table_contains_worlds(self) -> None:
+        sim = HyperionEconomySim(SimulationConfig(ticks=1, seed=11))
+        table = sim.world_table()
+        self.assertIn("WELTENSTATUS", table)
+        self.assertIn("Hyperion", table)
+
 
 if __name__ == "__main__":
     unittest.main()
