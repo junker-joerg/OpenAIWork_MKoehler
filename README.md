@@ -2,43 +2,57 @@
 
 Arbeitsverzeichnis für OpenAI Codex.
 
-## Neon Trade Tycoon (Python Terminal-App)
+## Hyperion-inspirierte Wirtschaftssimulation (neu)
 
-Eine kleine Wirtschaftshandelssimulation mit schickem Textinterface **ohne `curses` und ohne externe Abhängigkeiten**.
+Eine kleine, tick-basierte Interstellar-Ökonomie mit Fokus auf:
 
-### Start (Terminal-Version)
+- Hegemonie/Kernwelten vs. Peripherie
+- Farcaster-Netz als Niedrigfriktions-Infrastruktur
+- TechnoCore-Einfluss (Signale, Gebühren, Prognosefehler/Optimierung)
+- Ouster-Risiko auf Randrouten
+- Templar-Weltenbaum-Sonderkorridor
+- Hyperion als asymmetrische Sonderwelt (Pilgerdruck, Relikte, Risiko)
+- Time-Debt-Effekte für nicht-farcaster-basierte Logistik
+- Exogene Schocks (Sanktionen, Aufstände, Farcaster-Störungen usw.)
+
+### Implementierungsplan (kurz)
+
+1. Welten + Güter als Datamodelle definieren.
+2. Produktion/Konsum und preisgetriebene Engpässe pro Tick berechnen.
+3. Handelsheuristik mit Transportkosten, Time Debt und Fraktionsmodifikatoren anwenden.
+4. Event-System für politische/technologische Schocks pro Tick integrieren.
+5. CLI-Summary mit Top-Preisen, Engpässen, Fraktionslage und Handelslog ausgeben.
+
+### Start
+
+```bash
+python3 hyperion_economy.py --ticks 12 --seed 7
+```
+
+Optionen:
+
+- `--event-chance` (Standard: `0.45`)
+- `--trade-intensity` (Standard: `1.0`)
+- `--faction-strength` (Standard: `1.0`)
+
+### Tests
+
+```bash
+python3 -m unittest discover -s tests -p 'test_*.py'
+```
+
+---
+
+## Bestehende Demo: Neon Trade Tycoon (Terminal-App)
 
 ```bash
 python3 trade_sim.py
 ```
 
-### Steuerung
+## Bestehende Demo: Neon Trade Tycoon (Jupyter/IPython Notebook)
 
-- `k/j` **oder** `Pfeil hoch/runter`: Ware auswählen
-- `w/s`: Zielstadt auswählen
-- `b`: Ware kaufen
-- `v`: Ware verkaufen
-- `t`: In ausgewählte Stadt reisen
-- `r`: Treibstoff tanken
-- `d`: Schulden tilgen
-- `n`: Nächsten Tag starten (Marktpreise ändern sich)
-- `q`: Spiel beenden
-
-Hinweis: In Nicht-TTY-Umgebungen nutzt das Spiel automatisch Zeileneingabe (`Befehl >`).
-
-## Neon Trade Tycoon (Jupyter/IPython Notebook)
-
-Zusätzlich gibt es eine Notebook-Fassung: `trade_sim_notebook.ipynb`.
-
-### Voraussetzungen
+Datei: `trade_sim_notebook.ipynb`
 
 ```bash
 pip install ipywidgets
 ```
-
-### Nutzung
-
-1. Jupyter starten (`jupyter lab` oder `jupyter notebook`).
-2. `trade_sim_notebook.ipynb` öffnen.
-3. Alle Zellen ausführen.
-4. Über Dropdowns + Buttons handeln (Kaufen/Verkaufen/Reisen/Tanken/etc.).
