@@ -2,9 +2,9 @@
 
 Arbeitsverzeichnis für OpenAI Codex.
 
-## Hyperion-inspirierte Wirtschaftssimulation (Textanwendung)
+## Hyperion-inspirierte Wirtschaftssimulation (Ein-Datei-Textanwendung)
 
-Die Simulation ist jetzt als **reine Textanwendung (print/input)** ausgelegt und läuft dadurch auch in **Pythonista auf dem iPad**.
+Die Simulation liegt jetzt zentral in **`trade_sim.py`** (Ein-Datei-App), damit sie in **Pythonista auf dem iPad** direkt als eine Datei geladen und ausgeführt werden kann.
 
 Enthaltene Systemelemente:
 
@@ -15,20 +15,12 @@ Enthaltene Systemelemente:
 - Hyperion als Sonderwelt (hohe Unsicherheit, Pilgerdruck, Reliktökonomie)
 - Ereignisse: Farcaster-Störung, Ouster-Raid, Sanktionen, Pilgerboom, Aufstand, Core-Schocks, Templar-Korridor
 
-### Implementierungsplan (kurz)
-
-1. Welten + Güter als Datamodelle definieren.
-2. Produktion/Konsum und preisgetriebene Engpässe pro Tick berechnen.
-3. Handelsheuristik mit Transportkosten, Time Debt und Fraktionsmodifikatoren anwenden.
-4. Event-System für politische/technologische Schocks pro Tick integrieren.
-5. Textausgabe pro Tick mit Preisen, Engpässen, Fraktionslage und Handelslog bereitstellen.
-
 ### Start
 
-#### Pythonista / interaktiv
+#### Pythonista / interaktiv (empfohlen)
 
 ```bash
-python3 hyperion_economy.py
+python3 trade_sim.py
 ```
 
 Bei Start ohne Parameter läuft die interaktive Textanwendung:
@@ -41,7 +33,7 @@ Bei Start ohne Parameter läuft die interaktive Textanwendung:
 #### Nicht-interaktiv (Batch-Lauf)
 
 ```bash
-python3 hyperion_economy.py --ticks 12 --seed 7
+python3 trade_sim.py --ticks 12 --seed 7
 ```
 
 Optionen:
@@ -57,15 +49,13 @@ Optionen:
 python3 -m unittest discover -s tests -p 'test_*.py'
 ```
 
+## Hinweis zur Kompatibilität
+
+`hyperion_economy.py` ist nur noch ein dünner Wrapper auf `trade_sim.py`.
+
 ---
 
-## Bestehende Demo: Neon Trade Tycoon (Terminal-App)
-
-```bash
-python3 trade_sim.py
-```
-
-## Bestehende Demo: Neon Trade Tycoon (Jupyter/IPython Notebook)
+## Notebook-Demo (optional)
 
 Datei: `trade_sim_notebook.ipynb`
 

@@ -1,6 +1,6 @@
 import unittest
 
-from hyperion_economy import HyperionEconomySim, SimulationConfig
+from trade_sim import HyperionEconomySim, SimulationConfig
 
 
 class HyperionEconomyTests(unittest.TestCase):
