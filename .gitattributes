@@ -1,0 +1,7 @@
+# Treat workbook and other binary artifacts as binary to avoid text conversion/diff issues
+*.xlsx binary
+*.xls binary
+*.ods binary
+
+# Keep notebook as text-based JSON diffable
+*.ipynb text eol=lf

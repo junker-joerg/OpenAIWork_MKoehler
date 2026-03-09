@@ -1,0 +1,9 @@
+event_key,weight,duration,farcaster_efficiency,transport_cost_bonus,risk_bonus,core_noise,pilgrim_demand,production_penalty,templar_bonus,target_world_rule,description
+farcaster_stoerung,0.16,2,0.25,3.5,0.0,0.0,1.0,0.0,0.0,none,Farcaster-Störung trifft Kernwelten
+ouster_raid,0.16,2,1.0,0.0,1.8,0.0,1.0,0.0,0.0,random_periphery,Ouster-Raid auf Grenzwelt
+pilgerboom,0.14,3,1.0,0.0,0.0,0.0,1.45,0.0,0.0,none,Pilgerströme Richtung Hyperion
+sanktionen,0.12,2,1.0,0.0,0.0,0.0,1.0,0.0,0.0,random_hegemony,Politische Sanktionen gegen Hegemonie-Welt
+core_prognosefehler,0.12,2,1.0,0.0,0.0,0.18,1.0,0.0,0.0,none,Core-Prognosefehler erhöht Volatilität
+core_optimierung,0.12,2,1.0,-1.2,0.0,-0.04,1.0,0.0,0.0,none,TechnoCore optimiert Handelsnetz
+templar_korridor,0.10,1,1.0,0.0,0.0,0.0,1.0,0.0,0.9,templar_route,Weltenbaum-Sonderroute verfügbar
+aufstand,0.08,2,1.0,0.0,1.2,0.0,1.0,0.18,0.0,random_periphery,Aufstand in der Peripherie

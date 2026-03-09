@@ -1,0 +1,9 @@
+good,base_price,volatility,strategic
+nahrung,28,0.14,0.70
+rohstoffe,42,0.20,0.80
+industrieteile,67,0.24,0.85
+energie,56,0.19,0.90
+luxus,120,0.28,0.50
+biotech,142,0.30,0.95
+core_daten,175,0.26,0.70
+relikte,260,0.40,0.45

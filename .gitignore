@@ -1,0 +1,5 @@
+__pycache__/
+tests/__pycache__/
+
+# generated workbook artifact (rebuild from CSV sources)
+spreadsheet_model/hyperion_spreadsheet_model.xlsx

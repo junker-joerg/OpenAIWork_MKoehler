@@ -1,0 +1,9 @@
+world,category,population_factor,faction,farcaster,periphery,hyperion_special,pilgrim_pull,stability,prosperity
+Lusus,Kernwelt,1.6,Hegemonie,1,0,0,0.0,0.86,0.90
+Tau Ceti,Agrarwelt,1.4,Hegemonie,1,0,0,0.0,0.84,0.72
+Maui-Covenant,Templarwelt,1.0,Templars,1,0,0,0.0,0.90,0.70
+Marsim,Industriewelt,1.5,Hegemonie,1,0,0,0.0,0.77,0.78
+Qom-Riyadh,Datenwelt,1.2,TechnoCore,1,0,0,0.0,0.80,0.83
+Bressia,Grenzwelt,0.9,Hegemonie,0,1,0,0.0,0.63,0.50
+Hebron,Pilgerwelt,1.0,Hegemonie,0,1,0,1.2,0.70,0.55
+Hyperion,Sonderwelt,0.8,Neutral,0,1,1,2.0,0.58,0.45
