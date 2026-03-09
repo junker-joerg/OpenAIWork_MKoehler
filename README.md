@@ -2,63 +2,58 @@
 
 Arbeitsverzeichnis für OpenAI Codex.
 
-## Hyperion-inspirierte Wirtschaftssimulation (Ein-Datei-Textanwendung)
+## Hyperion Economy als IPython Notebook (Hauptvariante)
 
-Die Simulation liegt jetzt zentral in **`trade_sim.py`** (Ein-Datei-App), damit sie in **Pythonista auf dem iPad** direkt als eine Datei geladen und ausgeführt werden kann.
+Die vollständige Hyperion-Wirtschaftssimulation ist als Notebook aufbereitet:
 
-Enthaltene Systemelemente:
+- Datei: `trade_sim_notebook.ipynb`
+- Parameter werden in **einer Zelle** gesetzt
+- Simulation läuft dann über eine feste Anzahl Jahre/Perioden
+- Ergebnisse werden mit **Pandas** tabellarisch und mit **Matplotlib** grafisch dargestellt
 
-- Hegemonie, TechnoCore, Ousters, Templars als Fraktionsdruck
-- Kernwelten vs. Peripherie- und Grenzwelten
-- Farcaster-Infrastruktur vs. konventionelle Routen
-- Time-Debt-Effekte außerhalb des Farcaster-Netzes
-- Hyperion als Sonderwelt (hohe Unsicherheit, Pilgerdruck, Reliktökonomie)
-- Ereignisse: Farcaster-Störung, Ouster-Raid, Sanktionen, Pilgerboom, Aufstand, Core-Schocks, Templar-Korridor
+### Features im Notebook
+
+- Hegemonie / TechnoCore / Ousters / Templars als systemische Fraktionen
+- Kernwelten, Peripherie- und Sonderwelten (inkl. Hyperion)
+- Farcaster vs. konventionelle Routen inkl. Time Debt
+- Eventsystem (z. B. Farcaster-Störung, Ouster-Raid, Pilgerboom, Sanktionen)
+- Jahresdaten als DataFrames (`df_yearly`, `df_world`, `df_price`)
+- Auswertung über Tabellen + mehrere Diagramme
 
 ### Start
 
-#### Pythonista / interaktiv (empfohlen)
+1. Notebook öffnen: `trade_sim_notebook.ipynb`
+2. Parameter-Zelle anpassen (`YEARS`, `SEED`, `EVENT_CHANCE`, ...)
+3. Zellen der Reihe nach ausführen
+
+### Abhängigkeiten
+
+```bash
+pip install pandas matplotlib jupyter
+```
+
+---
+
+## CLI-Variante (optional)
+
+Die gleiche Ökonomielogik ist weiterhin als Textanwendung in `trade_sim.py` vorhanden.
 
 ```bash
 python3 trade_sim.py
 ```
 
-Bei Start ohne Parameter läuft die interaktive Textanwendung:
-
-- `n`: 1 Tick weiter
-- `r`: mehrere Ticks laufen lassen
-- `w`: Weltenstatus anzeigen
-- `q`: beenden
-
-#### Nicht-interaktiv (Batch-Lauf)
+Batch-Lauf:
 
 ```bash
 python3 trade_sim.py --ticks 12 --seed 7
 ```
 
-Optionen:
+Kompatibilitäts-Wrapper:
 
-- `--event-chance` (Standard: `0.45`)
-- `--trade-intensity` (Standard: `1.0`)
-- `--faction-strength` (Standard: `1.0`)
-- `--interactive` (erzwingt Interaktivmodus)
+- `hyperion_economy.py` ruft intern `trade_sim.main()` auf.
 
 ### Tests
 
 ```bash
 python3 -m unittest discover -s tests -p 'test_*.py'
-```
-
-## Hinweis zur Kompatibilität
-
-`hyperion_economy.py` ist nur noch ein dünner Wrapper auf `trade_sim.py`.
-
----
-
-## Notebook-Demo (optional)
-
-Datei: `trade_sim_notebook.ipynb`
-
-```bash
-pip install ipywidgets
 ```
