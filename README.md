@@ -2,57 +2,56 @@
 
 Arbeitsverzeichnis für OpenAI Codex.
 
-## Hyperion Economy als IPython Notebook (Hauptvariante)
+## Hyperion Economy als Tabellenkalkulations-Modell (Hauptvariante)
 
-Die vollständige Hyperion-Wirtschaftssimulation ist als Notebook aufbereitet:
+Die Simulation ist vollständig als **tabellenkalkulations-taugliches Modell** aufbereitet (ohne Excel-spezifische Funktionen), nutzbar z. B. in:
 
-- Datei: `trade_sim_notebook.ipynb`
-- Parameter werden in **einer Zelle** gesetzt
-- Simulation läuft dann über eine feste Anzahl Jahre/Perioden
-- Ergebnisse werden mit **Pandas** tabellarisch und mit **Matplotlib** grafisch dargestellt
+- SoftMaker Plan
+- Apple Numbers (iPad)
+- LibreOffice Calc
 
-### Features im Notebook
+### Dateien
 
-- Hegemonie / TechnoCore / Ousters / Templars als systemische Fraktionen
-- Kernwelten, Peripherie- und Sonderwelten (inkl. Hyperion)
-- Farcaster vs. konventionelle Routen inkl. Time Debt
-- Eventsystem (z. B. Farcaster-Störung, Ouster-Raid, Pilgerboom, Sanktionen)
-- Jahresdaten als DataFrames (`df_yearly`, `df_world`, `df_price`)
-- Auswertung über Tabellen + mehrere Diagramme
+Im Ordner `spreadsheet_model/`:
 
-### Start
+- `00_parameters.csv` – globale Simulationsparameter
+- `01_goods.csv` – Güterstammdaten (Basispreis, Volatilität, strategische Relevanz)
+- `02_worlds.csv` – Weltenstammdaten (Kern/Peripherie/Farcaster usw.)
+- `03_profiles.csv` – Produktions- und Verbrauchsprofile je Welt/Gut
+- `04_events_table.csv` – Event-Gewichte und Modifikatoren
+- `SPREADSHEET_GUIDE.md` – Schritt-für-Schritt-Aufbau inkl. neutraler Formeln
 
-1. Notebook öffnen: `trade_sim_notebook.ipynb`
-2. Parameter-Zelle anpassen (`YEARS`, `SEED`, `EVENT_CHANCE`, ...)
-3. Zellen der Reihe nach ausführen
+### Start in einer Tabellenkalkulation
 
-### Abhängigkeiten
+1. CSV-Dateien als einzelne Tabellenblätter importieren.
+2. Nach Anleitung in `SPREADSHEET_GUIDE.md` die Jahr-Sheets (`Y0`, `Y1`, …) aufbauen.
+3. Parameter setzen (Perioden/Jahre, Event-Chance etc.).
+4. Simulation periodisch berechnen.
+5. Ergebnisse über Pivot/Diagramme auswerten.
 
-```bash
-pip install pandas matplotlib jupyter
-```
+### Enthaltene Hyperion-Mechaniken
+
+- Hegemonie / TechnoCore / Ousters / Templars
+- Kernwelten vs. Peripherie/Grenzwelten
+- Farcaster vs. konventionelle Routen
+- Time Debt
+- Hyperion als Sonderwelt mit Pilger-/Relikt-Dynamik
+- Eventschocks (Farcaster-Ausfall, Ouster-Raid, Sanktionen, Pilgerboom, Aufstand, Core-Effekte)
 
 ---
 
-## CLI-Variante (optional)
+## Python-Referenzimplementierung (optional)
 
-Die gleiche Ökonomielogik ist weiterhin als Textanwendung in `trade_sim.py` vorhanden.
+Die gleiche Logik ist weiterhin in Python verfügbar:
 
-```bash
-python3 trade_sim.py
-```
+- `trade_sim.py` (Text-App / CLI)
+- `hyperion_economy.py` (Kompatibilitäts-Wrapper)
 
-Batch-Lauf:
+## Notebook-Demo (optional)
 
-```bash
-python3 trade_sim.py --ticks 12 --seed 7
-```
+- `trade_sim_notebook.ipynb`
 
-Kompatibilitäts-Wrapper:
-
-- `hyperion_economy.py` ruft intern `trade_sim.main()` auf.
-
-### Tests
+## Tests
 
 ```bash
 python3 -m unittest discover -s tests -p 'test_*.py'

@@ -1,0 +1,13 @@
+parameter,value,notes
+YEARS,30,Anzahl Perioden/Jahre
+EVENT_CHANCE,0.45,Wahrscheinlichkeit je Jahr für Event
+TRADE_INTENSITY,1.0,Skalierung für Handelsvolumen
+FACTION_STRENGTH,1.0,Skalierung politischer Effekte
+CORE_FEE,0.015,TechnoCore Handelsgebühr (pro Einheit)
+BASE_RESERVE,7.5,Basis-Sicherheitslager
+POP_RESERVE_FACTOR,2.0,Zusatzreserve je Bevölkerungspunkt
+FARCASTER_BASE_COST,0.8,Grundkosten Farcaster-Route
+NORMAL_BASE_COST,4.5,Grundkosten konventionelle Route
+PERIPHERY_ROUTE_ADDON,2.3,Kostenaufschlag bei Peripherierouten
+TIME_DEBT_NORMAL,0.35,Time-Debt pro Einheit ohne Farcaster
+TIME_DEBT_PERIPHERY_ADDON,0.35,Zusatz-Time-Debt für Peripherierouten
