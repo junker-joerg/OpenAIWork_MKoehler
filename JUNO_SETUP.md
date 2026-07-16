@@ -17,16 +17,17 @@ Parameterzellen weiter.
 
 ## Lernende KI-Agenten
 
-`Juno_AI_Agents_Demo.ipynb` zeigt drei lokale Q-Learning-Händler:
+`Juno_AI_Agents_Demo.ipynb` zeigt drei lokale Lernagenten:
 
-- `Profit-Scout` optimiert stärker den Portfolio-Endwert.
-- `Reserve-Keeper` wird für Instabilität und Ereignisrisiken stärker bestraft.
-- `Hyperion-Speculator` handelt opportunistisch mit mittlerer Risikoaversion.
+- `Profit-Scout` nutzt SARSA und optimiert stärker den Portfolio-Endwert.
+- `Reserve-Keeper` nutzt Dyna-Q und wird für Instabilität, Time Debt und Ereignisse stärker belastet.
+- `Hyperion-Speculator` nutzt einen einfacheren Bandit-Vergleich.
 
-Die Agenten lernen aus Preisband, Stabilität, Liquidität und Bestand. Ihr
-Gedächtnis wird als `agent_memory.json` gespeichert und kann in einem späteren
-Juno-Lauf wieder geladen werden. Es ist bewusst eine transparente, kleine
-Q-Tabelle und kein externes Online-Modell.
+Die Agenten lernen aus echten Hyperion-Snapshots: Reliktpreis, Stabilität,
+Time Debt, Ereignissen, Hyperion-Bestand, Liquidität und Agentenbestand. Ihr
+Gedächtnis wird als versionierte `agent_memory.json` gespeichert und kann in
+einem späteren Juno-Lauf wieder geladen und weitertrainiert werden. Die
+Lernlogik bleibt transparent und benötigt kein externes Online-Modell.
 
 Für einen schnellen Lauf ohne Notebook:
 

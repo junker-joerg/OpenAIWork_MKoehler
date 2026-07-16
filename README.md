@@ -67,7 +67,7 @@ Ungültige Parameter werden mit einer erklärenden Fehlermeldung abgewiesen.
 - `juno_demo.py` (Simulation, KPIs, Diagramme und CSV-Export)
 - `run_juno_demo.py` (Ein-Klick-/Shortcut-Einstieg)
 - `Juno_AI_Agents_Demo.ipynb` (lokale lernende Agenten mit Q-Learning)
-- `learning_agents.py` (drei Rollen, Training, Evaluation und JSON-Gedächtnis)
+- `learning_agents.py` (SARSA, Dyna-Q, Bandit, Hyperion-Integration und JSON-Gedächtnis)
 - `run_juno_agents.py` (Ein-Klick-/Shortcut-Einstieg für Agententraining)
 - `JUNO_SETUP.md` (Einrichtung und Präsentationsablauf)
 
