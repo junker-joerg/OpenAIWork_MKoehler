@@ -66,12 +66,19 @@ Ungültige Parameter werden mit einer erklärenden Fehlermeldung abgewiesen.
 - `Juno_Demo.ipynb` (geführte, kompakte Demo)
 - `juno_demo.py` (Simulation, KPIs, Diagramme und CSV-Export)
 - `run_juno_demo.py` (Ein-Klick-/Shortcut-Einstieg)
+- `Juno_AI_Agents_Demo.ipynb` (lokale lernende Agenten mit Q-Learning)
+- `learning_agents.py` (drei Rollen, Training, Evaluation und JSON-Gedächtnis)
+- `run_juno_agents.py` (Ein-Klick-/Shortcut-Einstieg für Agententraining)
 - `JUNO_SETUP.md` (Einrichtung und Präsentationsablauf)
 
 Die Juno-Demo verwendet feste Szenarien, große Matplotlib-Diagramme und kurze
 Tabellen für eine flüssige iPad-Präsentation. CSV wird immer exportiert;
 Parquet ist optional. Widgets sind eine Komfortfunktion und haben einen
 Parameterzellen-Fallback.
+
+Die Agenten-Demo läuft ebenfalls lokal/offline. Sie verwendet nur die
+Standardbibliothek für das Lernen; Pandas und Matplotlib werden im Notebook
+für Tabellen und Diagramme genutzt.
 
 ## Tests
 
