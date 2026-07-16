@@ -65,6 +65,7 @@ Ungültige Parameter werden mit einer erklärenden Fehlermeldung abgewiesen.
 
 - `Juno_Demo.ipynb` (geführte, kompakte Demo)
 - `juno_demo.py` (Simulation, KPIs, Diagramme und CSV-Export)
+- `run_juno_demo.py` (Ein-Klick-/Shortcut-Einstieg)
 - `JUNO_SETUP.md` (Einrichtung und Präsentationsablauf)
 
 Die Juno-Demo verwendet feste Szenarien, große Matplotlib-Diagramme und kurze

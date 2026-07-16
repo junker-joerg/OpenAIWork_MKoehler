@@ -6,6 +6,10 @@
 2. `Juno_Demo.ipynb`, `juno_demo.py`, `trade_sim.py` und `spreadsheet_model/` im selben Projektordner lassen.
 3. `Juno_Demo.ipynb` öffnen und die Zellen von oben nach unten ausführen.
 
+Für einen Ein-Klick-Lauf kann in Juno alternativ `run_juno_demo.py` gestartet
+werden. Das Skript schreibt die kompakten CSV-Ergebnisse in `demo_exports/` und
+eignet sich auch als Ziel für einen Juno-Siri-Shortcut.
+
 Juno führt Python-Skripte und Jupyter-Notebooks lokal auf dem iPad aus. Die Demo benötigt für den Standardlauf nur Pandas und Matplotlib. `ipywidgets` ist optional; ohne Widgets funktionieren die normalen Parameterzellen weiter.
 
 ## Empfohlener Demo-Ablauf
