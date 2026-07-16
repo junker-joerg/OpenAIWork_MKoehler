@@ -1,26 +1,52 @@
 #!/usr/bin/env python3
-"""Hyperion-inspirierte Wirtschaftssimulation als Python-Textanwendung.
+"""Hyperion-inspirierte Wirtschafts- und Handelssimulation.
 
-Ziel: Läuft als reine Konsoleingabe/-ausgabe auch in Pythonista (iPad).
+Die Stammdaten werden aus ``spreadsheet_model`` geladen. Dadurch bleiben
+Python- und Tabellenmodell synchron und die CLI bleibt ohne Zusatzpakete
+nutzbar.
 """
 
 from __future__ import annotations
 
 import argparse
+import csv
 import random
 import sys
 from dataclasses import dataclass, field
-from typing import Dict, List, Tuple
+from pathlib import Path
+from typing import Dict, Iterable, List, Optional, Tuple
 
+
+MODEL_DIR = Path(__file__).resolve().parent / "spreadsheet_model"
+
+
+def _read_model_csv(filename: str) -> List[Dict[str, str]]:
+    path = MODEL_DIR / filename
+    if not path.is_file():
+        raise FileNotFoundError(f"Modell-Datei fehlt: {path}")
+    with path.open(newline="", encoding="utf-8") as handle:
+        return list(csv.DictReader(handle))
+
+
+def _read_parameters() -> Dict[str, float]:
+    return {
+        row["parameter"]: float(row["value"])
+        for row in _read_model_csv("00_parameters.csv")
+    }
+
+
+def _as_bool(value: str) -> bool:
+    return value.strip().lower() in {"1", "true", "ja", "yes"}
+
+
+PARAMETERS = _read_parameters()
 GOOD_DATA: Dict[str, Dict[str, float]] = {
-    "nahrung": {"base_price": 28, "volatility": 0.14, "strategic": 0.7},
-    "rohstoffe": {"base_price": 42, "volatility": 0.20, "strategic": 0.8},
-    "industrieteile": {"base_price": 67, "volatility": 0.24, "strategic": 0.85},
-    "energie": {"base_price": 56, "volatility": 0.19, "strategic": 0.9},
-    "luxus": {"base_price": 120, "volatility": 0.28, "strategic": 0.5},
-    "biotech": {"base_price": 142, "volatility": 0.30, "strategic": 0.95},
-    "core_daten": {"base_price": 175, "volatility": 0.26, "strategic": 0.7},
-    "relikte": {"base_price": 260, "volatility": 0.40, "strategic": 0.45},
+    row["good"]: {
+        "base_price": float(row["base_price"]),
+        "volatility": float(row["volatility"]),
+        "strategic": float(row["strategic"]),
+    }
+    for row in _read_model_csv("01_goods.csv")
 }
 GOODS = list(GOOD_DATA.keys())
 
@@ -43,6 +69,7 @@ class World:
     prices: Dict[str, float] = field(default_factory=dict)
     time_debt: float = 0.0
     embargo_ticks: int = 0
+    cash: float = 1000.0
 
     def __post_init__(self) -> None:
         for good in GOODS:
@@ -55,16 +82,79 @@ class EventEffect:
     name: str
     ticks_left: int
     modifiers: Dict[str, float]
+    target_world: Optional[str] = None
+
+
+@dataclass(frozen=True)
+class EventDefinition:
+    key: str
+    weight: float
+    duration: int
+    modifiers: Dict[str, float]
+    target_world_rule: str
+    description: str
+
+
+def _read_event_definitions() -> List[EventDefinition]:
+    definitions = []
+    modifier_keys = (
+        "farcaster_efficiency",
+        "transport_cost_bonus",
+        "risk_bonus",
+        "core_noise",
+        "pilgrim_demand",
+        "production_penalty",
+        "templar_bonus",
+    )
+    for row in _read_model_csv("04_events_table.csv"):
+        definitions.append(
+            EventDefinition(
+                key=row["event_key"],
+                weight=float(row["weight"]),
+                duration=int(row["duration"]),
+                modifiers={key: float(row[key]) for key in modifier_keys},
+                target_world_rule=row["target_world_rule"],
+                description=row["description"],
+            )
+        )
+    if not definitions or sum(item.weight for item in definitions) <= 0:
+        raise ValueError("Die Ereignistabelle muss ein positives Gewicht enthalten.")
+    return definitions
+
+
+EVENT_DEFINITIONS = _read_event_definitions()
 
 
 @dataclass
 class SimulationConfig:
-    ticks: int = 20
+    ticks: int = int(PARAMETERS.get("YEARS", 20))
     seed: int = 7
-    event_chance: float = 0.45
-    trade_intensity: float = 1.0
-    faction_strength: float = 1.0
-    core_fee: float = 0.015
+    event_chance: float = PARAMETERS.get("EVENT_CHANCE", 0.45)
+    trade_intensity: float = PARAMETERS.get("TRADE_INTENSITY", 1.0)
+    faction_strength: float = PARAMETERS.get("FACTION_STRENGTH", 1.0)
+    core_fee: float = PARAMETERS.get("CORE_FEE", 0.015)
+    route_capacity: float = 6.0
+    base_reserve: float = PARAMETERS.get("BASE_RESERVE", 7.5)
+    pop_reserve_factor: float = PARAMETERS.get("POP_RESERVE_FACTOR", 2.0)
+    farcaster_base_cost: float = PARAMETERS.get("FARCASTER_BASE_COST", 0.8)
+    normal_base_cost: float = PARAMETERS.get("NORMAL_BASE_COST", 4.5)
+    periphery_route_addon: float = PARAMETERS.get("PERIPHERY_ROUTE_ADDON", 2.3)
+    time_debt_normal: float = PARAMETERS.get("TIME_DEBT_NORMAL", 0.35)
+    time_debt_periphery_addon: float = PARAMETERS.get("TIME_DEBT_PERIPHERY_ADDON", 0.35)
+
+    def __post_init__(self) -> None:
+        if self.ticks <= 0:
+            raise ValueError("ticks muss größer als 0 sein.")
+        if not 0.0 <= self.event_chance <= 1.0:
+            raise ValueError("event_chance muss zwischen 0 und 1 liegen.")
+        if self.trade_intensity < 0.0:
+            raise ValueError("trade_intensity darf nicht negativ sein.")
+        if self.faction_strength < 0.0:
+            raise ValueError("faction_strength darf nicht negativ sein.")
+        if self.core_fee < 0.0:
+            raise ValueError("core_fee darf nicht negativ sein.")
+        if self.route_capacity <= 0.0:
+            raise ValueError("route_capacity muss positiv sein.")
 
 
 class HyperionEconomySim:
@@ -84,18 +174,42 @@ class HyperionEconomySim:
         }
 
     def _build_worlds(self) -> List[World]:
-        return [
-            World("Lusus", "Kernwelt", 1.6, {"luxus": 3, "core_daten": 2}, {"nahrung": 4, "energie": 2}, 0.86, 0.9, "Hegemonie", True, False),
-            World("Tau Ceti", "Agrarwelt", 1.4, {"nahrung": 6, "biotech": 1.5}, {"energie": 2, "industrieteile": 2}, 0.84, 0.72, "Hegemonie", True, False),
-            World("Maui-Covenant", "Templarwelt", 1.0, {"biotech": 2.2, "nahrung": 2}, {"energie": 1.5, "luxus": 1}, 0.9, 0.7, "Templars", True, False),
-            World("Marsim", "Industriewelt", 1.5, {"industrieteile": 5, "energie": 3}, {"rohstoffe": 4, "nahrung": 2.4}, 0.77, 0.78, "Hegemonie", True, False),
-            World("Qom-Riyadh", "Datenwelt", 1.2, {"core_daten": 4.4, "luxus": 1.1}, {"nahrung": 2, "energie": 2}, 0.8, 0.83, "TechnoCore", True, False),
-            World("Bressia", "Grenzwelt", 0.9, {"rohstoffe": 3.2, "energie": 1.4}, {"nahrung": 2.6, "industrieteile": 1.9}, 0.63, 0.5, "Hegemonie", False, True),
-            World("Hebron", "Pilgerwelt", 1.0, {"luxus": 1.3}, {"nahrung": 2.2, "energie": 1.8, "biotech": 1.6}, 0.7, 0.55, "Hegemonie", False, True, pilgrim_pull=1.2),
-            World("Hyperion", "Sonderwelt", 0.8, {"relikte": 0.7, "rohstoffe": 1.4}, {"nahrung": 1.8, "energie": 2.1, "luxus": 1.4}, 0.58, 0.45, "Neutral", False, True, hyperion_special=True, pilgrim_pull=2.0),
-        ]
+        profiles = _read_model_csv("03_profiles.csv")
+        worlds: List[World] = []
+        for row in _read_model_csv("02_worlds.csv"):
+            world_profiles = [profile for profile in profiles if profile["world"] == row["world"]]
+            production = {
+                profile["good"]: float(profile["production"])
+                for profile in world_profiles
+                if float(profile["production"]) > 0
+            }
+            consumption = {
+                profile["good"]: float(profile["consumption"])
+                for profile in world_profiles
+                if float(profile["consumption"]) > 0
+            }
+            population = float(row["population_factor"])
+            worlds.append(
+                World(
+                    name=row["world"],
+                    category=row["category"],
+                    population_factor=population,
+                    production=production,
+                    consumption=consumption,
+                    stability=float(row["stability"]),
+                    prosperity=float(row["prosperity"]),
+                    faction=row["faction"],
+                    farcaster=_as_bool(row["farcaster"]),
+                    periphery=_as_bool(row["periphery"]),
+                    hyperion_special=_as_bool(row["hyperion_special"]),
+                    pilgrim_pull=float(row["pilgrim_pull"]),
+                    cash=1000.0 * population,
+                )
+            )
+        return worlds
 
-    def _combined_modifiers(self) -> Dict[str, float]:
+    @staticmethod
+    def _merge_effects(effects: Iterable[EventEffect]) -> Dict[str, float]:
         merged = {
             "farcaster_efficiency": 1.0,
             "transport_cost_bonus": 0.0,
@@ -105,7 +219,7 @@ class HyperionEconomySim:
             "production_penalty": 0.0,
             "templar_bonus": 0.0,
         }
-        for effect in self.active_effects:
+        for effect in effects:
             for key, value in effect.modifiers.items():
                 if key in {"transport_cost_bonus", "risk_bonus", "core_noise", "production_penalty", "templar_bonus"}:
                     merged[key] += value
@@ -113,59 +227,64 @@ class HyperionEconomySim:
                     merged[key] *= value
         return merged
 
+    def _combined_modifiers(self, world: Optional[World] = None) -> Dict[str, float]:
+        effects = [
+            effect
+            for effect in self.active_effects
+            if effect.target_world is None
+            or (world is not None and effect.target_world == world.name)
+        ]
+        return self._merge_effects(effects)
+
+    def _route_modifiers(self, source: World, target: World) -> Dict[str, float]:
+        endpoints = {source.name, target.name}
+        return self._merge_effects(
+            effect
+            for effect in self.active_effects
+            if effect.target_world is None or effect.target_world in endpoints
+        )
+
     def _roll_event(self) -> None:
         self.current_events = []
         if self.rng.random() > self.config.event_chance:
             return
 
-        event_table: List[Tuple[str, float]] = [
-            ("farcaster_stoerung", 0.16),
-            ("ouster_raid", 0.16),
-            ("pilgerboom", 0.14),
-            ("sanktionen", 0.12),
-            ("core_prognosefehler", 0.12),
-            ("core_optimierung", 0.12),
-            ("templar_korridor", 0.1),
-            ("aufstand", 0.08),
-        ]
-        pick = self.rng.random()
+        total_weight = sum(item.weight for item in EVENT_DEFINITIONS)
+        pick = self.rng.uniform(0.0, total_weight)
         pointer = 0.0
-        selected = "core_optimierung"
-        for name, weight in event_table:
-            pointer += weight
+        selected = EVENT_DEFINITIONS[-1]
+        for definition in EVENT_DEFINITIONS:
+            pointer += definition.weight
             if pick <= pointer:
-                selected = name
+                selected = definition
                 break
 
-        if selected == "farcaster_stoerung":
-            self.active_effects.append(EventEffect("Farcaster-Störung", 2, {"farcaster_efficiency": 0.25, "transport_cost_bonus": 3.5}))
-            self.current_events.append("Farcaster-Störung trifft Kernwelten")
-        elif selected == "ouster_raid":
-            target = self.rng.choice([w for w in self.worlds if w.periphery])
-            target.stability = max(0.2, target.stability - 0.08 * self.config.faction_strength)
-            self.active_effects.append(EventEffect("Ouster-Druck", 2, {"risk_bonus": 1.8}))
-            self.current_events.append(f"Ouster-Raid bei {target.name}")
-        elif selected == "pilgerboom":
-            self.active_effects.append(EventEffect("Pilgerboom", 3, {"pilgrim_demand": 1.45}))
-            self.current_events.append("Pilgerströme Richtung Hyperion")
-        elif selected == "sanktionen":
-            target = self.rng.choice([w for w in self.worlds if w.faction == "Hegemonie"])
-            target.embargo_ticks = 2
-            self.current_events.append(f"Politische Sanktionen gegen {target.name}")
-        elif selected == "core_prognosefehler":
-            self.active_effects.append(EventEffect("Core-Prognosefehler", 2, {"core_noise": 0.18}))
-            self.current_events.append("TechnoCore-Prognosefehler erhöht Marktvolatilität")
-        elif selected == "core_optimierung":
-            self.active_effects.append(EventEffect("Core-Optimierung", 2, {"core_noise": -0.04, "transport_cost_bonus": -1.2}))
-            self.current_events.append("TechnoCore optimiert Handelsnetz temporär")
-        elif selected == "templar_korridor":
-            self.active_effects.append(EventEffect("Templar-Korridor", 1, {"templar_bonus": 0.9}))
-            self.current_events.append("Weltenbaum-Sonderroute verfügbar")
-        elif selected == "aufstand":
-            target = self.rng.choice([w for w in self.worlds if w.periphery])
-            target.stability = max(0.2, target.stability - 0.12)
-            self.active_effects.append(EventEffect("Peripherie-Aufstand", 2, {"production_penalty": 0.18, "risk_bonus": 1.2}))
-            self.current_events.append(f"Aufstand auf {target.name}")
+        target: Optional[World] = None
+        if selected.target_world_rule == "random_periphery":
+            target = self.rng.choice([world for world in self.worlds if world.periphery])
+        elif selected.target_world_rule == "random_hegemony":
+            target = self.rng.choice([world for world in self.worlds if world.faction == "Hegemonie"])
+
+        if target is not None:
+            if selected.key == "ouster_raid":
+                target.stability = max(0.2, target.stability - 0.08 * self.config.faction_strength)
+            elif selected.key == "aufstand":
+                target.stability = max(0.2, target.stability - 0.12 * self.config.faction_strength)
+            elif selected.key == "sanktionen":
+                target.embargo_ticks = selected.duration
+
+        self.active_effects.append(
+            EventEffect(
+                name=selected.key,
+                ticks_left=selected.duration,
+                modifiers=selected.modifiers,
+                target_world=target.name if target is not None else None,
+            )
+        )
+        description = selected.description
+        if target is not None:
+            description = f"{description} ({target.name})"
+        self.current_events.append(description)
 
     def _advance_effects(self) -> None:
         kept: List[EventEffect] = []
@@ -175,19 +294,23 @@ class HyperionEconomySim:
                 kept.append(effect)
         self.active_effects = kept
 
-    def _produce_and_consume(self, mods: Dict[str, float]) -> None:
+    def _reserve(self, world: World) -> float:
+        return self.config.base_reserve + world.population_factor * self.config.pop_reserve_factor
+
+    def _produce_and_consume(self, mods: Optional[Dict[str, float]] = None) -> None:
         for world in self.worlds:
-            prod_penalty = mods["production_penalty"] if world.periphery else mods["production_penalty"] * 0.4
-            stability_factor = 0.85 + (world.stability * 0.3)
+            world_mods = self._combined_modifiers(world)
+            prod_penalty = world_mods["production_penalty"] if world.periphery else world_mods["production_penalty"] * 0.4
+            stability_factor = 0.85 + world.stability * 0.3
             for good in GOODS:
                 produced = world.production.get(good, 0.0) * stability_factor * (1 - prod_penalty)
                 world.stock[good] += produced
 
                 demand = world.consumption.get(good, 0.0) * world.population_factor
                 if world.hyperion_special and good in {"luxus", "relikte"}:
-                    demand *= 1.0 + (world.pilgrim_pull * 0.2)
+                    demand *= 1.0 + world.pilgrim_pull * 0.2
                 if good in {"luxus", "relikte"}:
-                    demand *= mods["pilgrim_demand"]
+                    demand *= world_mods["pilgrim_demand"]
 
                 if world.stock[good] >= demand:
                     world.stock[good] -= demand
@@ -198,28 +321,39 @@ class HyperionEconomySim:
                     world.stability = max(0.2, world.stability - min(0.015 + shortage * 0.002, 0.06))
                     world.prosperity = max(0.2, world.prosperity - min(0.01 + shortage * 0.0015, 0.05))
 
-    def _update_prices(self, mods: Dict[str, float]) -> None:
+    def _update_prices(self, mods: Optional[Dict[str, float]] = None) -> None:
         for world in self.worlds:
+            world_mods = self._combined_modifiers(world)
             for good in GOODS:
-                base = GOOD_DATA[good]["base_price"]
-                strategic = GOOD_DATA[good]["strategic"]
-                volatility = GOOD_DATA[good]["volatility"]
+                data = GOOD_DATA[good]
                 demand = world.consumption.get(good, 0.0) * max(0.5, world.population_factor)
                 available = world.stock[good] + 1.0
                 imbalance = (demand + 1.0) / available
                 tension = max(0.8, 1.25 - world.stability)
-                noise = self.rng.uniform(-mods["core_noise"], mods["core_noise"]) * (1.2 if world.periphery else 0.8)
-                price = base * (1 + volatility * (imbalance - 1)) * (1 + strategic * (tension - 1)) * (1 + noise)
+                noise = self.rng.uniform(-world_mods["core_noise"], world_mods["core_noise"])
+                noise *= 1.2 if world.periphery else 0.8
+                price = (
+                    data["base_price"]
+                    * (1 + data["volatility"] * (imbalance - 1))
+                    * (1 + data["strategic"] * (tension - 1))
+                    * (1 + noise)
+                )
                 world.prices[good] = max(4.0, round(price, 2))
 
-    def _transport_cost(self, source: World, target: World, mods: Dict[str, float]) -> Tuple[float, float]:
+    def _transport_cost(self, source: World, target: World, mods: Optional[Dict[str, float]] = None) -> Tuple[float, float]:
+        mods = self._route_modifiers(source, target)
         if source.farcaster and target.farcaster:
-            cost = 0.8 / max(0.15, mods["farcaster_efficiency"]) + mods["transport_cost_bonus"]
+            cost = self.config.farcaster_base_cost / max(0.15, mods["farcaster_efficiency"])
+            cost += mods["transport_cost_bonus"]
             time_debt = 0.0
         else:
-            cost = 4.5 + mods["transport_cost_bonus"] + (2.3 if source.periphery or target.periphery else 0.0)
+            cost = self.config.normal_base_cost + mods["transport_cost_bonus"]
+            if source.periphery or target.periphery:
+                cost += self.config.periphery_route_addon
             cost += mods["risk_bonus"] * 0.6
-            time_debt = 0.35 + (0.35 if source.periphery or target.periphery else 0.0)
+            time_debt = self.config.time_debt_normal
+            if source.periphery or target.periphery:
+                time_debt += self.config.time_debt_periphery_addon
             if mods["templar_bonus"] > 0 and (source.faction == "Templars" or target.faction == "Templars"):
                 cost = max(0.7, cost - 2.5 * mods["templar_bonus"])
                 time_debt = max(0.1, time_debt - 0.25)
@@ -227,14 +361,15 @@ class HyperionEconomySim:
         cost += self.config.core_fee * 10 * self.faction_state["core_signal"]
         return max(0.2, cost), time_debt
 
-    def _trade(self, mods: Dict[str, float]) -> None:
+    def _trade(self, mods: Optional[Dict[str, float]] = None) -> None:
         self.trade_log.clear()
-        route_capacity = 6.0 * self.config.trade_intensity
+        route_capacity = self.config.route_capacity * self.config.trade_intensity
         for good in GOODS:
+            remaining_capacity = route_capacity
             exporters = []
             importers = []
             for world in self.worlds:
-                reserve = 7.5 + world.population_factor * 2.0
+                reserve = self._reserve(world)
                 surplus = world.stock[good] - reserve
                 deficit = reserve - world.stock[good]
                 if surplus > 0.8 and world.embargo_ticks <= 0:
@@ -248,14 +383,21 @@ class HyperionEconomySim:
             for buyer, deficit in importers:
                 remaining = deficit
                 for idx, (seller, surplus) in enumerate(exporters):
-                    if remaining <= 0.1 or surplus <= 0.1 or seller is buyer:
+                    if remaining_capacity <= 0.1 or remaining <= 0.1 or surplus <= 0.1 or seller is buyer:
                         continue
-                    unit_cost, time_debt = self._transport_cost(seller, buyer, mods)
-                    margin = buyer.prices[good] - (seller.prices[good] + unit_cost)
+                    unit_cost, time_debt = self._transport_cost(seller, buyer)
+                    landed_price = seller.prices[good] + unit_cost
+                    margin = buyer.prices[good] - landed_price
                     if margin <= 0:
                         continue
 
-                    qty = min(surplus, remaining, route_capacity)
+                    affordable = buyer.cash / landed_price if landed_price > 0 else 0.0
+                    qty = min(surplus, remaining, remaining_capacity, affordable)
+                    if qty <= 0.1:
+                        continue
+
+                    buyer.cash -= qty * landed_price
+                    seller.cash += qty * seller.prices[good]
                     seller.stock[good] -= qty
                     buyer.stock[good] += qty
                     seller.prosperity = min(1.4, seller.prosperity + 0.004 * qty)
@@ -264,7 +406,11 @@ class HyperionEconomySim:
 
                     exporters[idx] = (seller, surplus - qty)
                     remaining -= qty
-                    self.trade_log.append(f"{good}: {seller.name} -> {buyer.name} ({qty:.1f} u, kosten {unit_cost:.1f})")
+                    remaining_capacity -= qty
+                    self.trade_log.append(
+                        f"{good}: {seller.name} -> {buyer.name} "
+                        f"({qty:.1f} u, Preis {landed_price:.1f}, Kosten {unit_cost:.1f})"
+                    )
 
     def _post_tick_updates(self) -> None:
         for world in self.worlds:
@@ -281,30 +427,28 @@ class HyperionEconomySim:
         self._roll_event()
         mods = self._combined_modifiers()
         self.faction_state["templar_access"] = mods["templar_bonus"]
-        self.faction_state["ouster_threat"] = 1.0 + (mods["risk_bonus"] * 0.2)
+        self.faction_state["ouster_threat"] = 1.0 + mods["risk_bonus"] * 0.2
         self.faction_state["core_signal"] = max(0.6, 1.0 + mods["core_noise"] * 0.8)
 
         self._produce_and_consume(mods)
         self._update_prices(mods)
         self._trade(mods)
+        self._update_prices(mods)
         self._post_tick_updates()
         self._advance_effects()
 
     def summary(self) -> str:
         top_prices: List[Tuple[str, float, str]] = []
         shortages: List[Tuple[float, str, str]] = []
-
         for world in self.worlds:
             for good in GOODS:
                 top_prices.append((good, world.prices[good], world.name))
-                reserve = 7.5 + world.population_factor * 2
-                shortages.append((reserve - world.stock[good], world.name, good))
+                shortages.append((self._reserve(world) - world.stock[good], world.name, good))
 
-        top_prices.sort(key=lambda x: x[1], reverse=True)
-        shortages.sort(key=lambda x: x[0], reverse=True)
-        richest = sorted(self.worlds, key=lambda w: w.prosperity, reverse=True)[:3]
-        stable = sorted(self.worlds, key=lambda w: w.stability, reverse=True)[:3]
-
+        top_prices.sort(key=lambda item: item[1], reverse=True)
+        shortages.sort(key=lambda item: item[0], reverse=True)
+        richest = sorted(self.worlds, key=lambda world: world.prosperity, reverse=True)[:3]
+        stable = sorted(self.worlds, key=lambda world: world.stability, reverse=True)[:3]
         lines = [
             f"\n=== Tick {self.tick} ===",
             f"Aktive Ereignisse: {', '.join(self.current_events) if self.current_events else 'keine'}",
@@ -319,36 +463,36 @@ class HyperionEconomySim:
         ]
         for good, price, world_name in top_prices[:5]:
             lines.append(f"  - {good:14s} {price:7.2f} @ {world_name}")
-
         lines.append("Reichste/Prosperierende Welten:")
-        for w in richest:
+        for world in richest:
             lines.append(
-                f"  - {w.name:12s} Wohlstand={w.prosperity:.2f} "
-                f"Stabilität={w.stability:.2f} TimeDebt={w.time_debt:.1f}"
+                f"  - {world.name:12s} Wohlstand={world.prosperity:.2f} "
+                f"Stabilität={world.stability:.2f} Cash={world.cash:.1f} "
+                f"TimeDebt={world.time_debt:.1f}"
             )
-
         lines.append("Stabilste Welten:")
-        for w in stable:
-            lines.append(f"  - {w.name:12s} Stabilität={w.stability:.2f}")
-
+        for world in stable:
+            lines.append(f"  - {world.name:12s} Stabilität={world.stability:.2f}")
         lines.append("Größte Engpässe:")
         for deficit, world_name, good in shortages[:5]:
             if deficit > 0.2:
                 lines.append(f"  - {world_name:12s} fehlt {good:14s} ({deficit:.1f} u)")
-
         if self.trade_log:
             lines.append("Handelslog (Auszug):")
-            for entry in self.trade_log[:6]:
-                lines.append(f"  - {entry}")
+            lines.extend(f"  - {entry}" for entry in self.trade_log[:6])
         return "\n".join(lines)
 
     def world_table(self) -> str:
-        lines = ["\nWELTENSTATUS", "Name         Typ          Faction      Stab   Wohlst TimeDebt Farcaster"]
-        for w in self.worlds:
-            far = "ja" if w.farcaster else "nein"
+        lines = [
+            "\nWELTENSTATUS",
+            "Name         Typ          Faction      Stab   Wohlst    Cash TimeDebt Farcaster",
+        ]
+        for world in self.worlds:
+            farcaster = "ja" if world.farcaster else "nein"
             lines.append(
-                f"{w.name:12s} {w.category[:12]:12s} {w.faction[:11]:11s} "
-                f"{w.stability:>5.2f}  {w.prosperity:>5.2f}   {w.time_debt:>6.1f}   {far:>3s}"
+                f"{world.name:12s} {world.category[:12]:12s} {world.faction[:11]:11s} "
+                f"{world.stability:>5.2f}  {world.prosperity:>5.2f} {world.cash:>7.1f} "
+                f"{world.time_debt:>6.1f}   {farcaster:>3s}"
             )
         return "\n".join(lines)
 
@@ -359,15 +503,26 @@ class HyperionEconomySim:
 
 
 class TextApp:
-    """Interaktive Konsole, kompatibel mit Pythonista (print/input)."""
+    """Interaktive Konsole, kompatibel mit Pythonista."""
 
     def __init__(self, config: SimulationConfig):
         self.sim = HyperionEconomySim(config)
 
     @staticmethod
     def _ask_int(prompt: str, default: int) -> int:
-        raw = input(f"{prompt} [{default}]: ").strip()
-        return default if not raw else int(raw)
+        while True:
+            raw = input(f"{prompt} [{default}]: ").strip()
+            if not raw:
+                return default
+            try:
+                value = int(raw)
+            except ValueError:
+                print("Bitte eine ganze Zahl eingeben.")
+                continue
+            if value <= 0:
+                print("Bitte eine Zahl größer als 0 eingeben.")
+                continue
+            return value
 
     def interactive_loop(self) -> None:
         print("Hyperion Economy - Textanwendung")
@@ -382,36 +537,46 @@ class TextApp:
                 continue
             if cmd == "r":
                 count = self._ask_int("Wie viele Ticks?", 5)
-                for _ in range(max(1, count)):
+                for _ in range(count):
                     self.sim.step()
                     print(self.sim.summary())
                 continue
-            self.sim.step()
-            print(self.sim.summary())
+            if cmd == "n":
+                self.sim.step()
+                print(self.sim.summary())
+                continue
+            print("Unbekannter Befehl. Erlaubt sind n, r, w und q.")
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Hyperion-inspirierte interplanetare Wirtschaftssimulation")
-    parser.add_argument("--ticks", type=int, default=20, help="Anzahl der Ticks")
+    parser.add_argument("--ticks", type=int, default=SimulationConfig.ticks, help="Anzahl der Ticks")
     parser.add_argument("--seed", type=int, default=7, help="Seed für reproduzierbare Läufe")
-    parser.add_argument("--event-chance", type=float, default=0.45, help="Wahrscheinlichkeit pro Tick für Ereignisse")
-    parser.add_argument("--trade-intensity", type=float, default=1.0, help="Handelsintensität")
-    parser.add_argument("--faction-strength", type=float, default=1.0, help="Stärke politischer Fraktionseffekte")
+    parser.add_argument("--event-chance", type=float, default=SimulationConfig.event_chance, help="Wahrscheinlichkeit pro Tick für Ereignisse")
+    parser.add_argument("--trade-intensity", type=float, default=SimulationConfig.trade_intensity, help="Handelsintensität")
+    parser.add_argument("--faction-strength", type=float, default=SimulationConfig.faction_strength, help="Stärke politischer Fraktionseffekte")
+    parser.add_argument("--core-fee", type=float, default=SimulationConfig.core_fee, help="Handelsgebühr pro Einheit")
+    parser.add_argument("--route-capacity", type=float, default=SimulationConfig.route_capacity, help="Maximales Handelsvolumen pro Gut und Tick")
     parser.add_argument("--interactive", action="store_true", help="Interaktive Textanwendung starten")
     return parser
 
 
 def main() -> None:
-    args = build_parser().parse_args()
-    config = SimulationConfig(
-        ticks=args.ticks,
-        seed=args.seed,
-        event_chance=args.event_chance,
-        trade_intensity=args.trade_intensity,
-        faction_strength=args.faction_strength,
-    )
+    parser = build_parser()
+    args = parser.parse_args()
+    try:
+        config = SimulationConfig(
+            ticks=args.ticks,
+            seed=args.seed,
+            event_chance=args.event_chance,
+            trade_intensity=args.trade_intensity,
+            faction_strength=args.faction_strength,
+            core_fee=args.core_fee,
+            route_capacity=args.route_capacity,
+        )
+    except ValueError as error:
+        parser.error(str(error))
 
-    # Ohne Parameter (typisch Pythonista 'Run') automatisch interaktiv starten.
     if args.interactive or len(sys.argv) == 1:
         TextApp(config).interactive_loop()
     else:

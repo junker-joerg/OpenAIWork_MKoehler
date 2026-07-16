@@ -47,6 +47,16 @@ Die gleiche Logik ist weiterhin in Python verfügbar:
 - `trade_sim.py` (Text-App / CLI)
 - `hyperion_economy.py` (Kompatibilitäts-Wrapper)
 
+Die Python-Simulation lädt Güter, Welten, Produktionsprofile, Ereignisse und
+Basisparameter aus `spreadsheet_model/`. Beispiel für einen reproduzierbaren
+Batch-Lauf:
+
+```bash
+python3 trade_sim.py --ticks 30 --seed 7 --event-chance 0.45
+```
+
+Ungültige Parameter werden mit einer erklärenden Fehlermeldung abgewiesen.
+
 ## Notebook-Demo (optional)
 
 - `trade_sim_notebook.ipynb`
