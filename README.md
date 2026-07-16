@@ -61,6 +61,17 @@ Ungültige Parameter werden mit einer erklärenden Fehlermeldung abgewiesen.
 
 - `trade_sim_notebook.ipynb`
 
+## Juno-Demo auf dem iPad
+
+- `Juno_Demo.ipynb` (geführte, kompakte Demo)
+- `juno_demo.py` (Simulation, KPIs, Diagramme und CSV-Export)
+- `JUNO_SETUP.md` (Einrichtung und Präsentationsablauf)
+
+Die Juno-Demo verwendet feste Szenarien, große Matplotlib-Diagramme und kurze
+Tabellen für eine flüssige iPad-Präsentation. CSV wird immer exportiert;
+Parquet ist optional. Widgets sind eine Komfortfunktion und haben einen
+Parameterzellen-Fallback.
+
 ## Tests
 
 ```bash

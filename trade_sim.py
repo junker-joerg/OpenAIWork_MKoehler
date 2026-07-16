@@ -141,6 +141,7 @@ class SimulationConfig:
     periphery_route_addon: float = PARAMETERS.get("PERIPHERY_ROUTE_ADDON", 2.3)
     time_debt_normal: float = PARAMETERS.get("TIME_DEBT_NORMAL", 0.35)
     time_debt_periphery_addon: float = PARAMETERS.get("TIME_DEBT_PERIPHERY_ADDON", 0.35)
+    scenario_events: Optional[Dict[int, str]] = None
 
     def __post_init__(self) -> None:
         if self.ticks <= 0:
@@ -165,7 +166,9 @@ class HyperionEconomySim:
         self.worlds = self._build_worlds()
         self.active_effects: List[EventEffect] = []
         self.current_events: List[str] = []
+        self.current_event_keys: List[str] = []
         self.trade_log: List[str] = []
+        self.trade_records: List[Dict[str, object]] = []
         self.faction_state: Dict[str, float] = {
             "hegemony_control": 1.0,
             "core_signal": 1.0,
@@ -246,18 +249,30 @@ class HyperionEconomySim:
 
     def _roll_event(self) -> None:
         self.current_events = []
-        if self.rng.random() > self.config.event_chance:
+        self.current_event_keys = []
+        forced_key = None
+        if self.config.scenario_events:
+            forced_key = self.config.scenario_events.get(self.tick)
+        if forced_key is None and self.rng.random() > self.config.event_chance:
             return
 
-        total_weight = sum(item.weight for item in EVENT_DEFINITIONS)
-        pick = self.rng.uniform(0.0, total_weight)
-        pointer = 0.0
-        selected = EVENT_DEFINITIONS[-1]
-        for definition in EVENT_DEFINITIONS:
-            pointer += definition.weight
-            if pick <= pointer:
-                selected = definition
-                break
+        if forced_key is not None:
+            selected = next(
+                (item for item in EVENT_DEFINITIONS if item.key == forced_key),
+                None,
+            )
+            if selected is None:
+                raise ValueError(f"Unbekanntes Szenario-Ereignis: {forced_key}")
+        else:
+            total_weight = sum(item.weight for item in EVENT_DEFINITIONS)
+            pick = self.rng.uniform(0.0, total_weight)
+            pointer = 0.0
+            selected = EVENT_DEFINITIONS[-1]
+            for definition in EVENT_DEFINITIONS:
+                pointer += definition.weight
+                if pick <= pointer:
+                    selected = definition
+                    break
 
         target: Optional[World] = None
         if selected.target_world_rule == "random_periphery":
@@ -285,6 +300,7 @@ class HyperionEconomySim:
         if target is not None:
             description = f"{description} ({target.name})"
         self.current_events.append(description)
+        self.current_event_keys.append(selected.key)
 
     def _advance_effects(self) -> None:
         kept: List[EventEffect] = []
@@ -363,6 +379,7 @@ class HyperionEconomySim:
 
     def _trade(self, mods: Optional[Dict[str, float]] = None) -> None:
         self.trade_log.clear()
+        self.trade_records.clear()
         route_capacity = self.config.route_capacity * self.config.trade_intensity
         for good in GOODS:
             remaining_capacity = route_capacity
@@ -410,6 +427,17 @@ class HyperionEconomySim:
                     self.trade_log.append(
                         f"{good}: {seller.name} -> {buyer.name} "
                         f"({qty:.1f} u, Preis {landed_price:.1f}, Kosten {unit_cost:.1f})"
+                    )
+                    self.trade_records.append(
+                        {
+                            "good": good,
+                            "seller": seller.name,
+                            "buyer": buyer.name,
+                            "quantity": qty,
+                            "unit_price": landed_price,
+                            "transport_cost": unit_cost,
+                            "trade_value": qty * landed_price,
+                        }
                     )
 
     def _post_tick_updates(self) -> None:
