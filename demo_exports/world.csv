@@ -1,0 +1,481 @@
+scenario,run,seed,year,world,category,faction,farcaster,periphery,stability,prosperity,cash,time_debt,hyperion_special
+baseline,1,7,1,Lusus,Kernwelt,Hegemonie,True,False,0.86,0.916,1600.0,0.0,False
+baseline,1,7,1,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.736,1400.0,0.0,False
+baseline,1,7,1,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.716,1000.0,0.0,False
+baseline,1,7,1,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.796,1500.0,0.0,False
+baseline,1,7,1,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.846,1200.0,0.0,False
+baseline,1,7,1,Bressia,Grenzwelt,Hegemonie,False,True,0.63,0.516,900.0,0.0,False
+baseline,1,7,1,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.5660000000000001,1000.0,0.0,False
+baseline,1,7,1,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.466,800.0,0.0,True
+baseline,1,7,2,Lusus,Kernwelt,Hegemonie,True,False,0.86,0.932,1600.0,0.0,False
+baseline,1,7,2,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.752,1400.0,0.0,False
+baseline,1,7,2,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.732,1000.0,0.0,False
+baseline,1,7,2,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.812,1500.0,0.0,False
+baseline,1,7,2,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.862,1200.0,0.0,False
+baseline,1,7,2,Bressia,Grenzwelt,Hegemonie,False,True,0.63,0.532,900.0,0.0,False
+baseline,1,7,2,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.5820000000000001,1000.0,0.0,False
+baseline,1,7,2,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.48200000000000004,800.0,0.0,True
+baseline,1,7,3,Lusus,Kernwelt,Hegemonie,True,False,0.86,0.9480000000000001,1600.0,0.0,False
+baseline,1,7,3,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.768,1400.0,0.0,False
+baseline,1,7,3,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.748,1000.0,0.0,False
+baseline,1,7,3,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.8280000000000001,1500.0,0.0,False
+baseline,1,7,3,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.878,1200.0,0.0,False
+baseline,1,7,3,Bressia,Grenzwelt,Hegemonie,False,True,0.63,0.548,900.0,0.0,False
+baseline,1,7,3,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.5980000000000001,1000.0,0.0,False
+baseline,1,7,3,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.49800000000000005,800.0,0.0,True
+baseline,1,7,4,Lusus,Kernwelt,Hegemonie,True,False,0.86,0.9769000000000001,1511.67972,0.0,False
+baseline,1,7,4,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.8152,1579.0439999999999,0.0,False
+baseline,1,7,4,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.764,1000.0,0.0,False
+baseline,1,7,4,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.8545,1401.7914,0.0,False
+baseline,1,7,4,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.894,1200.0,0.0,False
+baseline,1,7,4,Bressia,Grenzwelt,Hegemonie,False,True,0.63,0.5640000000000001,900.0,0.0,False
+baseline,1,7,4,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.6140000000000001,1000.0,0.0,False
+baseline,1,7,4,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.514,800.0,0.0,True
+baseline,1,7,5,Lusus,Kernwelt,Hegemonie,True,False,0.86,1.0109000000000001,1387.06212,0.0,False
+baseline,1,7,5,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.8552000000000001,1697.9039999999998,0.0,False
+baseline,1,7,5,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.78,1000.0,0.0,False
+baseline,1,7,5,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.8860800000000001,1196.8338,3.8639999999999994,False
+baseline,1,7,5,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.91,1200.0,0.0,False
+baseline,1,7,5,Bressia,Grenzwelt,Hegemonie,False,True,0.63,0.5800000000000001,900.0,0.0,False
+baseline,1,7,5,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.6540000000000001,1163.2,0.0,False
+baseline,1,7,5,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.53,800.0,0.0,True
+baseline,1,7,6,Lusus,Kernwelt,Hegemonie,True,False,0.86,1.0449000000000002,1253.20452,0.0,False
+baseline,1,7,6,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.8952000000000001,1826.004,0.0,False
+baseline,1,7,6,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.796,1000.0,0.0,False
+baseline,1,7,6,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.9172736000000001,992.7162000000001,7.418879999999999,False
+baseline,1,7,6,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.926,1200.0,0.0,False
+baseline,1,7,6,Bressia,Grenzwelt,Hegemonie,False,True,0.63,0.5960000000000001,900.0,0.0,False
+baseline,1,7,6,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.6940000000000002,1325.56,0.0,False
+baseline,1,7,6,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.546,800.0,0.0,True
+baseline,1,7,7,Lusus,Kernwelt,Hegemonie,True,False,0.86,1.0822000000000003,1082.4323600000002,0.0,False
+baseline,1,7,7,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.9112000000000001,1826.004,0.0,False
+baseline,1,7,7,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.8360000000000001,1123.6,0.0,False
+baseline,1,7,7,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.9525117120000002,834.7175999999998,10.689369599999997,False
+baseline,1,7,7,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.9420000000000001,1200.0,0.0,False
+baseline,1,7,7,Bressia,Grenzwelt,Hegemonie,False,True,0.63,0.6360000000000001,1056.6,0.0,False
+baseline,1,7,7,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.7100000000000002,1325.56,0.0,False
+baseline,1,7,7,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.562,800.0,0.0,True
+baseline,1,7,8,Lusus,Kernwelt,Hegemonie,True,False,0.86,1.1078000000000003,961.0256400000003,0.0,False
+baseline,1,7,8,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.9359000000000002,1704.1531599999996,0.0,False
+baseline,1,7,8,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.8940000000000001,1418.59,0.0,False
+baseline,1,7,8,Marsim,Industriewelt,Hegemonie,True,False,0.77,1.0118227750400002,609.9744000000001,13.698220031999998,False
+baseline,1,7,8,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.9613,1158.2664400000003,0.0,False
+baseline,1,7,8,Bressia,Grenzwelt,Hegemonie,False,True,0.63,0.6760000000000002,1216.9199999999998,0.0,False
+baseline,1,7,8,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.7260000000000002,1325.56,0.0,False
+baseline,1,7,8,Hyperion,Sonderwelt,Neutral,False,True,0.49999999999999994,0.5780000000000001,800.0,0.0,True
+baseline,1,7,9,Lusus,Kernwelt,Hegemonie,True,False,0.8384,1.1248500000000003,837.1280400000003,0.0,False
+baseline,1,7,9,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.9762000000000002,1379.8953999999997,0.0,False
+baseline,1,7,9,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.9421000000000002,1550.39328,0.0,False
+baseline,1,7,9,Marsim,Industriewelt,Hegemonie,True,False,0.77,1.0661379530368003,649.5768,15.500362429439997,False
+baseline,1,7,9,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.9885,1270.9664400000004,0.0,False
+baseline,1,7,9,Bressia,Grenzwelt,Hegemonie,False,True,0.63,0.6973152000000001,1317.7892080000001,0.0,False
+baseline,1,7,9,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.7600000000000002,1442.6499999999999,0.0,False
+baseline,1,7,9,Hyperion,Sonderwelt,Neutral,False,True,0.49999999999999994,0.5958933840000001,688.4477715199996,0.855747200000003,True
+baseline,1,7,10,Lusus,Kernwelt,Hegemonie,True,False,0.8226,1.1817220000000006,701.1162000000002,0.0,False
+baseline,1,7,10,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,1.0006000000000002,1258.1525199999996,0.0,False
+baseline,1,7,10,Maui-Covenant,Templarwelt,Templars,True,False,0.9,1.0061000000000002,1840.8532799999998,0.0,False
+baseline,1,7,10,Marsim,Industriewelt,Hegemonie,True,False,0.77,1.1205879167938564,711.7992000000002,14.260333435084798,False
+baseline,1,7,10,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,1.0045,1270.9664400000004,0.0,False
+baseline,1,7,10,Bressia,Grenzwelt,Hegemonie,False,True,0.63,0.7133152000000001,1317.7892080000001,0.0,False
+baseline,1,7,10,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.7760000000000002,1442.6499999999999,0.0,False
+baseline,1,7,10,Hyperion,Sonderwelt,Neutral,False,True,0.49999999999999994,0.6144020492800002,562.6477587199996,1.7970794240000025,True
+baseline,1,7,11,Lusus,Kernwelt,Hegemonie,True,False,0.8068,1.2139220000000006,428.15268000000015,0.0,False
+baseline,1,7,11,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,1.022804,1139.1491599999997,1.8032,False
+baseline,1,7,11,Maui-Covenant,Templarwelt,Templars,True,False,0.9,1.0461000000000003,1948.3732799999998,0.0,False
+baseline,1,7,11,Marsim,Industriewelt,Hegemonie,True,False,0.7498,1.153641883450348,754.5110000000005,16.983506760278015,False
+baseline,1,7,11,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,1.0205,1270.9664400000004,0.0,False
+baseline,1,7,11,Bressia,Grenzwelt,Hegemonie,False,True,0.61352,0.7233175000000003,1185.6104759999998,2.0028400000000053,False
+baseline,1,7,11,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.8168630000000002,1573.3388799999996,0.7084000000000044,False
+baseline,1,7,11,Hyperion,Sonderwelt,Neutral,False,True,0.49999999999999994,0.6522223413376003,705.6277587199996,1.6533130700800025,True
+baseline,1,7,12,Lusus,Kernwelt,Hegemonie,True,False,0.7909999999999999,1.2593220000000007,487.24548000000016,0.0,False
+baseline,1,7,12,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,1.04482768,1020.9857999999997,3.4621439999999994,False
+baseline,1,7,12,Maui-Covenant,Templarwelt,Templars,True,False,0.9,1.0925000000000002,2159.2812799999997,0.0,False
+baseline,1,7,12,Marsim,Industriewelt,Hegemonie,True,False,0.7276,1.1905435327743201,811.9838000000005,15.624826219455775,False
+baseline,1,7,12,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.7834000000000001,1.0413,1033.2392400000003,0.0,False
+baseline,1,7,12,Bressia,Grenzwelt,Hegemonie,False,True,0.5938399999999999,0.7391615160000002,1297.8432239999997,2.943852800000005,False
+baseline,1,7,12,Hebron,Pilgerwelt,Hegemonie,False,True,0.6841999999999999,0.8409201600000002,1613.6031599999997,1.6821280000000038,False
+baseline,1,7,12,Hyperion,Sonderwelt,Neutral,False,True,0.49999999999999994,0.6752454900305922,499.3379155199997,3.540632024473602,True
+baseline,1,7,13,Lusus,Kernwelt,Hegemonie,True,False,0.7751999999999999,1.315922000000001,646.3718800000001,0.0,False
+baseline,1,7,13,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.8231999999999999,1.0711114656,655.9573199999998,7.049172479999999,False
+baseline,1,7,13,Maui-Covenant,Templarwelt,Templars,True,False,0.9,1.1325000000000003,2276.7612799999997,0.0,False
+baseline,1,7,13,Marsim,Industriewelt,Hegemonie,True,False,0.7054,1.2035810501523745,638.0462000000005,14.374840121899314,False
+baseline,1,7,13,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.7636000000000001,1.0416999999999998,1033.2392400000003,0.0,False
+baseline,1,7,13,Bressia,Grenzwelt,Hegemonie,False,True,0.5741599999999999,0.7613571307200002,1504.2432239999998,2.708344576000005,False
+baseline,1,7,13,Hebron,Pilgerwelt,Hegemonie,False,True,0.6648,0.8457239472000002,1729.9330799999996,1.5475577600000037,False
+baseline,1,7,13,Hyperion,Sonderwelt,Neutral,False,True,0.49999999999999994,0.6934856668281449,372.09534271999973,4.267173462515713,True
+baseline,1,7,14,Lusus,Kernwelt,Hegemonie,True,False,0.7593999999999999,1.318,510.38768000000016,0.0,False
+baseline,1,7,14,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.8231999999999999,1.116706548352,717.1161519999991,6.485238681599999,False
+baseline,1,7,14,Maui-Covenant,Templarwelt,Templars,True,False,0.9,1.1959400000000004,2646.92328,0.0,False
+baseline,1,7,14,Marsim,Industriewelt,Hegemonie,True,False,0.6832,1.2167435661401844,467.2286000000005,13.22485291214737,False
+baseline,1,7,14,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.7438,1.0605371182577776,1385.0022793768921,0.0,False
+baseline,1,7,14,Bressia,Grenzwelt,Hegemonie,False,True,0.5544799999999999,0.7935968962624003,1551.5713919999998,4.694157009920004,False
+baseline,1,7,14,Hebron,Pilgerwelt,Hegemonie,False,True,0.6454,0.8536451914240002,1461.4543599999997,3.484553139200003,False
+baseline,1,7,14,Hyperion,Sonderwelt,Neutral,False,True,0.37999999999999995,0.7287681386057158,0.0,8.697375625016704,True
+baseline,1,7,15,Lusus,Kernwelt,Hegemonie,True,False,0.7243999999999998,1.3429300000000002,279.05988000000013,0.0,False
+baseline,1,7,15,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.8231999999999999,1.1631180244838402,705.1307599999992,5.966419587072,False
+baseline,1,7,15,Maui-Covenant,Templarwelt,Templars,True,False,0.8844000000000001,1.1994900000000004,2646.92328,0.0,False
+baseline,1,7,15,Marsim,Industriewelt,Hegemonie,True,False,0.661,1.2540210808489696,522.5510000000004,12.16686467917558,False
+baseline,1,7,15,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.7071999999999999,1.0779871182577776,1677.046279376892,0.0,False
+baseline,1,7,15,Bressia,Grenzwelt,Hegemonie,False,True,0.5347999999999998,0.7916174805614082,1551.5713919999998,4.318624449126404,False
+baseline,1,7,15,Hebron,Pilgerwelt,Hegemonie,False,True,0.609,0.8431847361100803,1326.0949999999998,4.236188888064003,False
+baseline,1,7,15,Hyperion,Sonderwelt,Neutral,False,True,0.37999999999999995,0.7418984010432141,0.0,8.001585575015369,True
+baseline,1,7,16,Lusus,Kernwelt,Hegemonie,True,False,0.7085999999999998,1.3566000000000003,496.59277999999995,0.0,False
+baseline,1,7,16,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.8033999999999999,1.193321382525133,706.9638799999992,5.489106020106241,False
+baseline,1,7,16,Maui-Covenant,Templarwelt,Templars,True,False,0.8664000000000001,1.2037900000000004,2579.6971200000003,0.0,False
+baseline,1,7,16,Marsim,Industriewelt,Hegemonie,True,False,0.6388,1.267404394381052,355.3934000000004,11.193515504841534,False
+baseline,1,7,16,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.6675999999999999,1.0783671182577774,1413.588679376892,3.8639999999999994,False
+baseline,1,7,16,Bressia,Grenzwelt,Hegemonie,False,True,0.5151199999999998,0.8200756181164955,1892.1673919999998,3.973134493196292,False
+baseline,1,7,16,Hebron,Pilgerwelt,Hegemonie,False,True,0.5710000000000001,0.8314491172212739,1196.0636399999999,4.927693777018883,False
+baseline,1,7,16,Hyperion,Sonderwelt,Neutral,False,True,0.37999999999999995,0.7550982424857127,0.0,7.36145872901414,True
+baseline,1,7,17,Lusus,Kernwelt,Hegemonie,True,False,0.6769999999999997,1.3334000000000001,132.8175799999999,0.0,False
+baseline,1,7,17,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.7827999999999999,1.2171824719231223,833.5642279999992,5.049977538497742,False
+baseline,1,7,17,Maui-Covenant,Templarwelt,Templars,True,False,0.8484,1.2325400000000002,2630.50752,0.0,False
+baseline,1,7,17,Marsim,Industriewelt,Hegemonie,True,False,0.6166,1.3048850428305678,412.15580000000034,10.29803426445421,False
+baseline,1,7,17,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.6477999999999998,1.1043807182577774,1734.658679376892,3.55488,False
+baseline,1,7,17,Bressia,Grenzwelt,Hegemonie,False,True,0.4954399999999998,0.8395992046671759,1769.5774439999998,6.959003733740589,False
+baseline,1,7,17,Hebron,Pilgerwelt,Hegemonie,False,True,0.5330000000000001,0.819644347843572,1061.28028,5.563878274857371,False
+baseline,1,7,17,Hyperion,Sonderwelt,Neutral,False,True,0.3640399999999999,0.7556420966128112,0.0,6.772542030693009,True
+baseline,1,7,18,Lusus,Kernwelt,Hegemonie,True,False,0.6611999999999997,1.322,78.17997999999989,0.0,False
+baseline,1,7,18,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.7622,1.2686271741692725,499.3047439999991,11.27273933541792,False
+baseline,1,7,18,Maui-Covenant,Templarwelt,Templars,True,False,0.8304,1.26129,2718.0879200000004,0.0,False
+baseline,1,7,18,Marsim,Industriewelt,Hegemonie,True,False,0.5944,1.3149701965735547,244.63820000000032,9.474191523297874,False
+baseline,1,7,18,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.6279999999999998,1.1024252302577773,1734.658679376892,3.2704896,False
+baseline,1,7,18,Bressia,Grenzwelt,Hegemonie,False,True,0.47575999999999985,0.8728036042938018,2030.821728,7.503523435041342,False
+baseline,1,7,18,Hebron,Pilgerwelt,Hegemonie,False,True,0.49500000000000016,0.8317759600160862,1161.7449199999999,6.149168012868781,False
+baseline,1,7,18,Hyperion,Sonderwelt,Neutral,False,True,0.3306799999999999,0.742444842409742,0.0,6.230738668237568,True
+baseline,1,7,19,Lusus,Kernwelt,Hegemonie,True,False,0.6295999999999996,1.308579428587771,0.0,0.0,False
+baseline,1,7,19,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.7622,1.3116288602357307,495.4868591999991,10.370920188584487,False
+baseline,1,7,19,Maui-Covenant,Templarwelt,Templars,True,False,0.8124,1.29363104,2790.8874752,0.0,False
+baseline,1,7,19,Marsim,Industriewelt,Hegemonie,True,False,0.5722,1.3498731522598992,320.0026056000002,8.716256201434044,False
+baseline,1,7,19,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.5907999999999998,1.1176581812977773,1647.151079376892,3.008850432,False
+baseline,1,7,19,Bressia,Grenzwelt,Hegemonie,False,True,0.4560799999999999,0.8769432519502975,2151.797728,6.903241560238035,False
+baseline,1,7,19,Hebron,Pilgerwelt,Hegemonie,False,True,0.45700000000000013,0.8198490432147993,1029.63356,6.687634571839278,False
+baseline,1,7,19,Hyperion,Sonderwelt,Neutral,False,True,0.2944399999999999,0.7271417685429182,0.0,5.732279574778563,True
+baseline,1,7,20,Lusus,Kernwelt,Hegemonie,True,False,0.587852952391847,1.309398472559143,1.4210854715202004e-14,1.413135942764915,False
+baseline,1,7,20,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.7622,1.3287029079811417,506.52489119999916,9.541246573497729,False
+baseline,1,7,20,Maui-Covenant,Templarwelt,Templars,True,False,0.7944,1.3123317103225134,2590.1942752,2.450864057235085,False
+baseline,1,7,20,Marsim,Industriewelt,Hegemonie,True,False,0.5545470476081528,1.3571283743798568,259.6084056000002,8.018955705319321,False
+baseline,1,7,20,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.5709999999999997,1.1257572962545772,1766.106079376892,2.76814239744,False
+baseline,1,7,20,Bressia,Grenzwelt,Hegemonie,False,True,0.4363999999999999,0.9151635277942738,2326.8300959999997,8.553462235418992,False
+baseline,1,7,20,Hebron,Pilgerwelt,Hegemonie,False,True,0.4190000000000001,0.8078682797576154,894.0502,7.1830238060921365,False
+baseline,1,7,20,Hyperion,Sonderwelt,Neutral,False,True,0.2,0.6991884599321072,0.0,5.2736972087962775,True
+baseline,2,8,1,Lusus,Kernwelt,Hegemonie,True,False,0.86,0.916,1600.0,0.0,False
+baseline,2,8,1,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.736,1400.0,0.0,False
+baseline,2,8,1,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.716,1000.0,0.0,False
+baseline,2,8,1,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.796,1500.0,0.0,False
+baseline,2,8,1,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.846,1200.0,0.0,False
+baseline,2,8,1,Bressia,Grenzwelt,Hegemonie,False,True,0.51,0.516,900.0,0.0,False
+baseline,2,8,1,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.5660000000000001,1000.0,0.0,False
+baseline,2,8,1,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.466,800.0,0.0,True
+baseline,2,8,2,Lusus,Kernwelt,Hegemonie,True,False,0.86,0.932,1600.0,0.0,False
+baseline,2,8,2,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.752,1400.0,0.0,False
+baseline,2,8,2,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.732,1000.0,0.0,False
+baseline,2,8,2,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.812,1500.0,0.0,False
+baseline,2,8,2,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.862,1200.0,0.0,False
+baseline,2,8,2,Bressia,Grenzwelt,Hegemonie,False,True,0.51,0.532,900.0,0.0,False
+baseline,2,8,2,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.5820000000000001,1000.0,0.0,False
+baseline,2,8,2,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.48200000000000004,800.0,0.0,True
+baseline,2,8,3,Lusus,Kernwelt,Hegemonie,True,False,0.86,0.9480000000000001,1600.0,0.0,False
+baseline,2,8,3,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.768,1400.0,0.0,False
+baseline,2,8,3,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.748,1000.0,0.0,False
+baseline,2,8,3,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.8280000000000001,1500.0,0.0,False
+baseline,2,8,3,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.878,1200.0,0.0,False
+baseline,2,8,3,Bressia,Grenzwelt,Hegemonie,False,True,0.51,0.548,900.0,0.0,False
+baseline,2,8,3,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.5980000000000001,1000.0,0.0,False
+baseline,2,8,3,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.49800000000000005,800.0,0.0,True
+baseline,2,8,4,Lusus,Kernwelt,Hegemonie,True,False,0.86,0.9909000000000001,1604.16472,0.0,False
+baseline,2,8,4,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.8012,1485.0539999999999,0.0,False
+baseline,2,8,4,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.764,1000.0,0.0,False
+baseline,2,8,4,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.8545,1403.2964,0.0,False
+baseline,2,8,4,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.894,1200.0,0.0,False
+baseline,2,8,4,Bressia,Grenzwelt,Hegemonie,False,True,0.39,0.5640000000000001,900.0,0.0,False
+baseline,2,8,4,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.6140000000000001,1000.0,0.0,False
+baseline,2,8,4,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.514,800.0,0.0,True
+baseline,2,8,5,Lusus,Kernwelt,Hegemonie,True,False,0.86,1.0249000000000001,1478.8871199999999,0.0,False
+baseline,2,8,5,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.8172,1485.0539999999999,0.0,False
+baseline,2,8,5,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.804,1119.52,0.0,False
+baseline,2,8,5,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.8860800000000001,1204.1588,3.8639999999999994,False
+baseline,2,8,5,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.91,1200.0,0.0,False
+baseline,2,8,5,Bressia,Grenzwelt,Hegemonie,False,True,0.39,0.5800000000000001,900.0,0.0,False
+baseline,2,8,5,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.6300000000000001,1000.0,0.0,False
+baseline,2,8,5,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.554,957.38,0.0,True
+baseline,2,8,6,Lusus,Kernwelt,Hegemonie,True,False,0.86,1.0829000000000002,1513.86952,0.0,False
+baseline,2,8,6,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.8572000000000001,1605.5939999999998,0.0,False
+baseline,2,8,6,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.8200000000000001,1119.52,0.0,False
+baseline,2,8,6,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.9176936000000001,1037.1212,3.55488,False
+baseline,2,8,6,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.926,1200.0,0.0,False
+baseline,2,8,6,Bressia,Grenzwelt,Hegemonie,False,True,0.39,0.5960000000000001,900.0,0.0,False
+baseline,2,8,6,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.6460000000000001,1000.0,0.0,False
+baseline,2,8,6,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.5700000000000001,957.38,0.0,True
+baseline,2,8,7,Lusus,Kernwelt,Hegemonie,True,False,0.86,1.1178626000000003,1317.0147600000003,3.1040799999999966,False
+baseline,2,8,7,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.8732000000000001,1605.5939999999998,0.0,False
+baseline,2,8,7,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.8647200000000002,1306.354,0.0,False
+baseline,2,8,7,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.9537381120000001,908.3835999999999,3.2704896,False
+baseline,2,8,7,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.9420000000000001,1200.0,0.0,False
+baseline,2,8,7,Bressia,Grenzwelt,Hegemonie,False,True,0.39,0.6120000000000001,900.0,0.0,False
+baseline,2,8,7,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.6620000000000001,1000.0,0.0,False
+baseline,2,8,7,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.60528,1054.6475999999998,0.0,True
+baseline,2,8,8,Lusus,Kernwelt,Hegemonie,True,False,0.86,1.1699521920000002,1171.3424400000006,2.8557535999999972,False
+baseline,2,8,8,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.9032530000000001,1381.3701599999995,1.3523999999999963,False
+baseline,2,8,8,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.9047200000000002,1434.034,0.0,False
+baseline,2,8,8,Marsim,Industriewelt,Hegemonie,True,False,0.77,1.0006110630400002,879.8220000000002,3.008850432,False
+baseline,2,8,8,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.9820000000000001,1363.86,0.0,False
+baseline,2,8,8,Bressia,Grenzwelt,Hegemonie,False,True,0.39,0.6280000000000001,900.0,0.0,False
+baseline,2,8,8,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.6864000000000001,1074.5499999999997,0.0,False
+baseline,2,8,8,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.62128,1054.6475999999998,0.0,True
+baseline,2,8,9,Lusus,Kernwelt,Hegemonie,True,False,0.86,1.1932666166400003,1054.2877200000005,2.6272933119999977,False
+baseline,2,8,9,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.93391776,1161.8803999999993,1.2442079999999966,False
+baseline,2,8,9,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.9559200000000002,1670.3940000000002,0.0,False
+baseline,2,8,9,Marsim,Industriewelt,Hegemonie,True,False,0.7522,1.0597901779968004,767.3868000000002,6.63214239744,False
+baseline,2,8,9,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.9980000000000001,1363.86,0.0,False
+baseline,2,8,9,Bressia,Grenzwelt,Hegemonie,False,True,0.39,0.6440000000000001,900.0,0.0,False
+baseline,2,8,9,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.7264000000000002,1231.2099999999998,0.0,False
+baseline,2,8,9,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.6372800000000001,1054.6475999999998,0.0,True
+baseline,2,8,10,Lusus,Kernwelt,Hegemonie,True,False,0.8376,1.2317538873088003,1051.1081600000002,2.417109847039998,False
+baseline,2,8,10,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.9717933392000001,1286.5003999999994,1.144671359999997,False
+baseline,2,8,10,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.9719200000000002,1670.3940000000002,0.0,False
+baseline,2,8,10,Marsim,Industriewelt,Hegemonie,True,False,0.7522,1.1151269637570564,777.4692000000001,6.1015710056448,False
+baseline,2,8,10,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,1.0317,1108.86436,0.0,False
+baseline,2,8,10,Bressia,Grenzwelt,Hegemonie,False,True,0.39,0.6621020000000001,829.0485599999996,0.9016000000000053,False
+baseline,2,8,10,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.7480000000000002,1287.518,0.0,False
+baseline,2,8,10,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.6532800000000001,1054.6475999999998,0.0,True
+baseline,2,8,11,Lusus,Kernwelt,Hegemonie,True,False,0.8218,1.2921121763240966,799.4429600000003,2.2237410592767985,False
+baseline,2,8,11,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,1.043946072064,1455.016696,4.659497651199997,False
+baseline,2,8,11,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.9879200000000002,1670.3940000000002,0.0,False
+baseline,2,8,11,Marsim,Industriewelt,Hegemonie,True,False,0.7348,1.156702806656492,780.0976,5.742245325193216,False
+baseline,2,8,11,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,1.0477,1108.86436,0.0,False
+baseline,2,8,11,Bressia,Grenzwelt,Hegemonie,False,True,0.37352,0.6637018400000002,834.6725599999996,0.8294720000000049,False
+baseline,2,8,11,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.7640000000000002,1287.518,0.0,False
+baseline,2,8,11,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.7027618640000001,900.0775219199993,2.8753312000000033,True
+baseline,2,8,12,Lusus,Kernwelt,Hegemonie,True,False,0.8059999999999999,1.311289802218169,662.2853600000003,2.045841774534655,False
+baseline,2,8,12,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,1.10703952229888,1242.1701279999997,5.948257839103998,False
+baseline,2,8,12,Maui-Covenant,Templarwelt,Templars,True,False,0.9,1.01472,1882.1550000000007,0.0,False
+baseline,2,8,12,Marsim,Industriewelt,Hegemonie,True,False,0.7126,1.1943085821239725,789.4000000000001,9.14686569917776,False
+baseline,2,8,12,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.7834000000000001,1.0505,1108.86436,0.0,False
+baseline,2,8,12,Bressia,Grenzwelt,Hegemonie,False,True,0.35384000000000004,0.6721294928000002,672.2239279999997,2.965594240000004,False
+baseline,2,8,12,Hebron,Pilgerwelt,Hegemonie,False,True,0.5641999999999999,0.7795830000000002,1167.8083199999994,1.7388000000000041,False
+baseline,2,8,12,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.7690685708800001,1183.3696691199991,3.655096704000003,True
+baseline,2,8,13,Lusus,Kernwelt,Hegemonie,True,False,0.7901999999999999,1.3157954158225467,533.7077600000002,1.8821744325718825,False
+baseline,2,8,13,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,1.1535046965149698,1277.5849359999997,5.472397211975678,False
+baseline,2,8,13,Maui-Covenant,Templarwelt,Templars,True,False,0.9,1.05472,2004.9750000000006,0.0,False
+baseline,2,8,13,Marsim,Industriewelt,Hegemonie,True,False,0.6904,1.2509138955540549,1039.0452,8.415116443243539,False
+baseline,2,8,13,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.7636000000000001,1.0509,1108.86436,0.0,False
+baseline,2,8,13,Bressia,Grenzwelt,Hegemonie,False,True,0.33416000000000007,0.6753332333760002,591.3074119999997,3.829586700800004,False
+baseline,2,8,13,Hebron,Pilgerwelt,Hegemonie,False,True,0.5448,0.8094715200000002,928.0307039999996,6.494096000000003,False
+baseline,2,8,13,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.7957647092096001,1122.6219865599992,4.826887367680003,True
+baseline,2,8,14,Lusus,Kernwelt,Hegemonie,True,False,0.7743999999999999,1.3158117825567428,372.55016000000023,1.731600477966132,False
+baseline,2,8,14,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,1.1993574567937721,1263.5500559999998,5.034605435017624,False
+baseline,2,8,14,Maui-Covenant,Templarwelt,Templars,True,False,0.9,1.0707200000000001,2004.9750000000006,0.0,False
+baseline,2,8,14,Marsim,Industriewelt,Hegemonie,True,False,0.6682,1.2998723839097306,1158.4956,7.7419071277840565,False
+baseline,2,8,14,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.7438,1.1087943999999998,1314.816536,0.0,False
+baseline,2,8,14,Bressia,Grenzwelt,Hegemonie,False,True,0.3144800000000001,0.6734402747059202,591.3074119999997,3.523219764736004,False
+baseline,2,8,14,Hebron,Pilgerwelt,Hegemonie,False,True,0.5254,0.8122101104000002,786.4473439999996,7.004968320000003,False
+baseline,2,8,14,Hyperion,Sonderwelt,Neutral,False,True,0.56304,0.8024736684728321,930.7992639999992,5.904934778265603,True
+baseline,2,8,15,Lusus,Kernwelt,Hegemonie,True,False,0.7387999999999998,1.3376289323920953,261.90943999999973,1.5930724397288416,False
+baseline,2,8,15,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.824,1.2603363038103785,1367.224448,4.631837000216214,False
+baseline,2,8,15,Maui-Covenant,Templarwelt,Templars,True,False,0.9,1.0903200000000002,1906.263480000001,0.0,False
+baseline,2,8,15,Marsim,Industriewelt,Hegemonie,True,False,0.646,1.361698193196952,1425.2579999999998,7.122554557561332,False
+baseline,2,8,15,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.724,1.1091943999999998,1314.816536,0.0,False
+baseline,2,8,15,Bressia,Grenzwelt,Hegemonie,False,True,0.2948000000000001,0.6815985527294466,416.4783799999997,5.443842183557123,False
+baseline,2,8,15,Hebron,Pilgerwelt,Hegemonie,False,True,0.506,0.8148976135680003,649.6159839999996,7.474970854400002,False
+baseline,2,8,15,Hyperion,Sonderwelt,Neutral,False,True,0.52776,0.8009848229950055,855.6848774399991,6.896738396004355,True
+baseline,2,8,16,Lusus,Kernwelt,Hegemonie,True,False,0.7229999999999998,1.315840692756027,132.79183999999975,1.4656266445505344,False
+baseline,2,8,16,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.8063948717067385,1.268979273890411,1241.442656,4.261290040198917,False
+baseline,2,8,16,Maui-Covenant,Templarwelt,Templars,True,False,0.9,1.13972,2080.137880000001,0.0,False
+baseline,2,8,16,Marsim,Industriewelt,Hegemonie,True,False,0.6238,1.361787744544244,1696.9540999999997,10.416750192956426,False
+baseline,2,8,16,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.7041999999999999,1.1095943999999998,1314.816536,0.0,False
+baseline,2,8,16,Bressia,Grenzwelt,Hegemonie,False,True,0.27512000000000014,0.6845544685110908,334.99756399999967,6.109574808872554,False
+baseline,2,8,16,Hebron,Pilgerwelt,Hegemonie,False,True,0.48660000000000003,0.8175381164825604,513.2966239999996,7.907373186048002,False
+baseline,2,8,16,Hyperion,Sonderwelt,Neutral,False,True,0.49152,0.8271951491554052,766.647277439999,10.208999324324006,True
+baseline,2,8,17,Lusus,Kernwelt,Hegemonie,True,False,0.6884051282932611,1.345591283555491,494.76345999999967,1.3483765129864917,False
+baseline,2,8,17,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.7857948717067386,1.3167531448863912,1016.0381759999999,3.9203868369830035,False
+baseline,2,8,17,Maui-Covenant,Templarwelt,Templars,True,False,0.9,1.16512,2128.596280000001,0.0,False
+baseline,2,8,17,Marsim,Industriewelt,Hegemonie,True,False,0.6016,1.3385383249807044,1722.2164999999998,13.447410177519911,False
+baseline,2,8,17,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.6675999999999999,1.0966443999999997,1314.816536,0.0,False
+baseline,2,8,17,Bressia,Grenzwelt,Hegemonie,False,True,0.25544000000000017,0.6874438110302035,253.07214799999966,6.7220488241627505,False
+baseline,2,8,17,Hebron,Pilgerwelt,Hegemonie,False,True,0.4508000000000001,0.8310853791639556,534.7532639999996,8.30518333116416,False
+baseline,2,8,17,Hyperion,Sonderwelt,Neutral,False,True,0.47364,0.8352027292229728,515.0472518399991,11.411863378378087,True
+baseline,2,8,18,Lusus,Kernwelt,Hegemonie,True,False,0.651205128293261,1.3270651623487015,127.56825999999961,1.2405063919475725,False
+baseline,2,8,18,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.7857948717067386,1.3300079613163018,1017.1312959999999,3.6067558900243633,False
+baseline,2,8,18,Maui-Covenant,Templarwelt,Templars,True,False,0.883,1.1946199999999998,2218.326680000001,0.0,False
+baseline,2,8,18,Marsim,Industriewelt,Hegemonie,True,False,0.5794,1.360695258982248,2047.1803999999997,12.371617363318318,False
+baseline,2,8,18,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.6279999999999998,1.0878443999999996,1438.288536,0.0,False
+baseline,2,8,18,Bressia,Grenzwelt,Hegemonie,False,True,0.23576000000000016,0.6902719061477871,171.65973199999968,7.285524918229731,False
+baseline,2,8,18,Hebron,Pilgerwelt,Hegemonie,False,True,0.4128000000000001,0.8189428608308392,400.14590399999963,8.671168664671027,False
+baseline,2,8,18,Hyperion,Sonderwelt,Neutral,False,True,0.45576,0.8339015428851351,515.0472518399991,10.49891430810784,True
+baseline,2,8,19,Lusus,Kernwelt,Hegemonie,True,False,0.635405128293261,1.3158759493608052,21.001059999999597,1.1412658805917668,False
+baseline,2,8,19,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.7857948717067386,1.3298433244109975,1002.2519359999999,5.121415418822415,False
+baseline,2,8,19,Maui-Covenant,Templarwelt,Templars,True,False,0.865,1.1972999999999996,2145.9254800000012,0.644,False
+baseline,2,8,19,Marsim,Industriewelt,Hegemonie,True,False,0.5572,1.3143428382636682,1885.8931999999998,15.245887974252852,False
+baseline,2,8,19,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.5883999999999997,1.0726443999999995,1438.288536,0.0,False
+baseline,2,8,19,Bressia,Grenzwelt,Hegemonie,False,True,0.21608000000000016,0.7170436536559641,326.4459799999997,7.803922924771352,False
+baseline,2,8,19,Hebron,Pilgerwelt,Hegemonie,False,True,0.3748000000000001,0.8463837439643721,241.73268399999972,12.871875171497344,False
+baseline,2,8,19,Hyperion,Sonderwelt,Neutral,False,True,0.43788,0.8630916514543243,734.5112518399991,9.659001163459214,True
+baseline,2,8,20,Lusus,Kernwelt,Hegemonie,True,False,0.6038051282932609,1.319285873411941,393.3010599999996,1.0499646101444255,False
+baseline,2,8,20,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.7659948717067385,1.3240918584581178,991.4045759999999,6.514902185316622,False
+baseline,2,8,20,Maui-Covenant,Templarwelt,Templars,True,False,0.847,1.1987567999999995,2108.7118595200013,0.59248,False
+baseline,2,8,20,Marsim,Industriewelt,Hegemonie,True,False,0.535,1.3384754112025747,1981.4059999999997,14.026216936312625,False
+baseline,2,8,20,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.5487999999999996,1.1058443999999994,1440.249336,0.0,False
+baseline,2,8,20,Bressia,Grenzwelt,Hegemonie,False,True,0.2,0.737343561363487,116.44392799999967,12.144849090789643,False
+baseline,2,8,20,Hebron,Pilgerwelt,Hegemonie,False,True,0.35540000000000005,0.8665245564472224,268.7917639999998,12.872525157777556,False
+baseline,2,8,20,Hyperion,Sonderwelt,Neutral,False,True,0.40356,0.8647358793379786,361.08007231999915,12.370063470382476,True
+baseline,3,9,1,Lusus,Kernwelt,Hegemonie,True,False,0.86,0.916,1600.0,0.0,False
+baseline,3,9,1,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.736,1400.0,0.0,False
+baseline,3,9,1,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.716,1000.0,0.0,False
+baseline,3,9,1,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.796,1500.0,0.0,False
+baseline,3,9,1,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.846,1200.0,0.0,False
+baseline,3,9,1,Bressia,Grenzwelt,Hegemonie,False,True,0.63,0.516,900.0,0.0,False
+baseline,3,9,1,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.5660000000000001,1000.0,0.0,False
+baseline,3,9,1,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.466,800.0,0.0,True
+baseline,3,9,2,Lusus,Kernwelt,Hegemonie,True,False,0.86,0.932,1600.0,0.0,False
+baseline,3,9,2,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.752,1400.0,0.0,False
+baseline,3,9,2,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.732,1000.0,0.0,False
+baseline,3,9,2,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.812,1500.0,0.0,False
+baseline,3,9,2,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.862,1200.0,0.0,False
+baseline,3,9,2,Bressia,Grenzwelt,Hegemonie,False,True,0.63,0.532,900.0,0.0,False
+baseline,3,9,2,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.5820000000000001,1000.0,0.0,False
+baseline,3,9,2,Hyperion,Sonderwelt,Neutral,False,True,0.58,0.48200000000000004,800.0,0.0,True
+baseline,3,9,3,Lusus,Kernwelt,Hegemonie,True,False,0.86,0.9480000000000001,1600.0,0.0,False
+baseline,3,9,3,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.768,1400.0,0.0,False
+baseline,3,9,3,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.748,1000.0,0.0,False
+baseline,3,9,3,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.8280000000000001,1500.0,0.0,False
+baseline,3,9,3,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.878,1200.0,0.0,False
+baseline,3,9,3,Bressia,Grenzwelt,Hegemonie,False,True,0.63,0.548,900.0,0.0,False
+baseline,3,9,3,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.5980000000000001,1000.0,0.0,False
+baseline,3,9,3,Hyperion,Sonderwelt,Neutral,False,True,0.49999999999999994,0.49800000000000005,800.0,0.0,True
+baseline,3,9,4,Lusus,Kernwelt,Hegemonie,True,False,0.86,0.9769000000000001,1504.15472,0.0,False
+baseline,3,9,4,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.8012,1491.719,0.0,False
+baseline,3,9,4,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.778,1093.73,0.0,False
+baseline,3,9,4,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.8545,1402.9114,0.0,False
+baseline,3,9,4,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.894,1200.0,0.0,False
+baseline,3,9,4,Bressia,Grenzwelt,Hegemonie,False,True,0.63,0.5640000000000001,900.0,0.0,False
+baseline,3,9,4,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.6140000000000001,1000.0,0.0,False
+baseline,3,9,4,Hyperion,Sonderwelt,Neutral,False,True,0.49999999999999994,0.514,800.0,0.0,True
+baseline,3,9,5,Lusus,Kernwelt,Hegemonie,True,False,0.86,1.0109000000000001,1372.87712,0.0,False
+baseline,3,9,5,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.8412000000000001,1653.299,0.0,False
+baseline,3,9,5,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.794,1093.73,0.0,False
+baseline,3,9,5,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.8885000000000001,1235.5738,0.0,False
+baseline,3,9,5,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.934,1325.52,0.0,False
+baseline,3,9,5,Bressia,Grenzwelt,Hegemonie,False,True,0.63,0.5800000000000001,900.0,0.0,False
+baseline,3,9,5,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.6300000000000001,1000.0,0.0,False
+baseline,3,9,5,Hyperion,Sonderwelt,Neutral,False,True,0.49999999999999994,0.53,800.0,0.0,True
+baseline,3,9,6,Lusus,Kernwelt,Hegemonie,True,False,0.86,1.0449000000000002,1240.0995200000002,0.0,False
+baseline,3,9,6,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.9052000000000001,1942.019,0.0,False
+baseline,3,9,6,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.81,1093.73,0.0,False
+baseline,3,9,6,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.9225000000000001,1068.1162,0.0,False
+baseline,3,9,6,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.9500000000000001,1325.52,0.0,False
+baseline,3,9,6,Bressia,Grenzwelt,Hegemonie,False,True,0.63,0.5960000000000001,900.0,0.0,False
+baseline,3,9,6,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.6460000000000001,1000.0,0.0,False
+baseline,3,9,6,Hyperion,Sonderwelt,Neutral,False,True,0.49999999999999994,0.546,800.0,0.0,True
+baseline,3,9,7,Lusus,Kernwelt,Hegemonie,True,False,0.86,1.0822000000000003,1073.9673600000006,0.0,False
+baseline,3,9,7,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.9452000000000002,2059.439,0.0,False
+baseline,3,9,7,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.8304,1135.629,0.0,False
+baseline,3,9,7,Marsim,Industriewelt,Hegemonie,True,False,0.77,0.9540800000000002,869.6386,3.8639999999999994,False
+baseline,3,9,7,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.9660000000000001,1325.52,0.0,False
+baseline,3,9,7,Bressia,Grenzwelt,Hegemonie,False,True,0.63,0.6120000000000001,900.0,0.0,False
+baseline,3,9,7,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.6860000000000002,1156.72,0.0,False
+baseline,3,9,7,Hyperion,Sonderwelt,Neutral,False,True,0.49999999999999994,0.562,800.0,0.0,True
+baseline,3,9,8,Lusus,Kernwelt,Hegemonie,True,False,0.86,1.1258000000000004,816.1310400000006,0.0,False
+baseline,3,9,8,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,0.9744000000000002,1883.2427599999994,0.0,False
+baseline,3,9,8,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.8704000000000001,1266.9089999999999,0.0,False
+baseline,3,9,8,Marsim,Industriewelt,Hegemonie,True,False,0.77,1.0048736,852.7520000000003,7.418879999999999,False
+baseline,3,9,8,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,0.9940230000000001,1388.5534400000006,0.7083999999999964,False
+baseline,3,9,8,Bressia,Grenzwelt,Hegemonie,False,True,0.63,0.6564000000000001,1094.1419999999998,0.0,False
+baseline,3,9,8,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.7020000000000002,1156.72,0.0,False
+baseline,3,9,8,Hyperion,Sonderwelt,Neutral,False,True,0.49999999999999994,0.5780000000000001,800.0,0.0,True
+baseline,3,9,9,Lusus,Kernwelt,Hegemonie,True,False,0.86,1.1514000000000004,694.3083200000005,0.0,False
+baseline,3,9,9,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,1.021244,1733.9741999999992,1.8032,False
+baseline,3,9,9,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.8864000000000001,1266.9089999999999,0.0,False
+baseline,3,9,9,Marsim,Industriewelt,Hegemonie,True,False,0.7522,1.0634759120000001,732.0452000000004,11.938729599999995,False
+baseline,3,9,9,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.8,1.00795216,1388.5534400000006,0.6517279999999966,False
+baseline,3,9,9,Bressia,Grenzwelt,Hegemonie,False,True,0.63,0.6724000000000001,1094.1419999999998,0.0,False
+baseline,3,9,9,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.7473152000000002,1411.883712,0.0,False
+baseline,3,9,9,Hyperion,Sonderwelt,Neutral,False,True,0.49999999999999994,0.6148533840000001,842.9867715199998,0.8557472000000006,True
+baseline,3,9,10,Lusus,Kernwelt,Hegemonie,True,False,0.8376,1.1886500000000007,674.2142000000005,0.0,False
+baseline,3,9,10,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,1.0674636800000001,1740.7793199999992,1.658944,False
+baseline,3,9,10,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.9024000000000001,1266.9089999999999,0.0,False
+baseline,3,9,10,Marsim,Industriewelt,Hegemonie,True,False,0.7522,1.1179670390400003,768.0026000000004,13.881631231999997,False
+baseline,3,9,10,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.781,1.0275589872,1317.2308800000005,0.599589759999997,False
+baseline,3,9,10,Bressia,Grenzwelt,Hegemonie,False,True,0.63,0.6884000000000001,1094.1419999999998,0.0,False
+baseline,3,9,10,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.7813152000000002,1532.5737120000001,0.0,False
+baseline,3,9,10,Hyperion,Sonderwelt,Neutral,False,True,0.49999999999999994,0.6333620492800002,713.0785987199998,1.7970794240000003,True
+baseline,3,9,11,Lusus,Kernwelt,Hegemonie,True,False,0.8218,1.2100500000000007,548.9366000000005,0.0,False
+baseline,3,9,11,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,1.1315017856000003,1496.6068399999992,3.3294284800000002,False
+baseline,3,9,11,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.9184000000000001,1266.9089999999999,0.0,False
+baseline,3,9,11,Marsim,Industriewelt,Hegemonie,True,False,0.7348,1.1587788759168003,828.8450000000005,12.771100733439997,False
+baseline,3,9,11,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.7612,1.049899028224,1480.5508800000005,0.5516225791999972,False
+baseline,3,9,11,Bressia,Grenzwelt,Hegemonie,False,True,0.61352,0.6912900000000002,1094.1419999999998,0.0,False
+baseline,3,9,11,Hebron,Pilgerwelt,Hegemonie,False,True,0.7,0.8085152000000002,1641.1017120000001,0.0,False
+baseline,3,9,11,Hyperion,Sonderwelt,Neutral,False,True,0.49999999999999994,0.6471823413376002,713.0785987199998,1.6533130700800003,True
+baseline,3,9,12,Lusus,Kernwelt,Hegemonie,True,False,0.8059999999999999,1.2494500000000008,188.64140000000043,0.0,False
+baseline,3,9,12,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,1.1533728427520002,1364.2519599999991,4.8662742016,False
+baseline,3,9,12,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.9692000000000002,1598.2740000000003,0.0,False
+baseline,3,9,12,Marsim,Industriewelt,Hegemonie,True,False,0.7126,1.1956817658434562,853.3874000000005,15.613412674764797,False
+baseline,3,9,12,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.7414,1.04824386596608,1480.5508800000005,0.5074927728639975,False
+baseline,3,9,12,Bressia,Grenzwelt,Hegemonie,False,True,0.5938399999999999,0.7283240000000002,1485.3506399999999,0.0,False
+baseline,3,9,12,Hebron,Pilgerwelt,Hegemonie,False,True,0.6841999999999999,0.8178262000000003,1413.4657919999995,1.7388000000000041,False
+baseline,3,9,12,Hyperion,Sonderwelt,Neutral,False,True,0.49999999999999994,0.6814054900305921,572.87265312,3.5406320244736,True
+baseline,3,9,13,Lusus,Kernwelt,Hegemonie,True,False,0.7901999999999999,1.270850000000001,58.923800000000426,0.0,False
+baseline,3,9,13,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,1.1992862153318402,1370.8930799999991,4.476972265472,False
+baseline,3,9,13,Maui-Covenant,Templarwelt,Templars,True,False,0.9,0.9852000000000002,1598.2740000000003,0.0,False
+baseline,3,9,13,Marsim,Industriewelt,Hegemonie,True,False,0.6904,1.2147004245759796,779.6338000000005,18.228339660783615,False
+baseline,3,9,13,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.7215999999999999,1.0881731166887936,1481.0932800000005,4.330893351034877,False
+baseline,3,9,13,Bressia,Grenzwelt,Hegemonie,False,True,0.5741599999999999,0.7904620000000002,1806.4447199999997,2.0608,False
+baseline,3,9,13,Hebron,Pilgerwelt,Hegemonie,False,True,0.6648,0.8210403200000004,1276.3464319999996,2.630096000000004,False
+baseline,3,9,13,Hyperion,Sonderwelt,Neutral,False,True,0.49999999999999994,0.6996456668281449,448.90720032,4.267173462515712,True
+baseline,3,9,14,Lusus,Kernwelt,Hegemonie,True,False,0.7743999999999999,1.282166460662082,0.0,0.0,False
+baseline,3,9,14,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.84,1.245238518105293,1377.5101999999993,4.11881448423424,False
+baseline,3,9,14,Maui-Covenant,Templarwelt,Templars,True,False,0.9,1.0124000000000002,1717.1900000000003,0.0,False
+baseline,3,9,14,Marsim,Industriewelt,Hegemonie,True,False,0.6682,1.2435411299478203,626.5264000000009,20.634072487920925,False
+baseline,3,9,14,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.7017999999999999,1.0924120273536901,1599.2264000000005,3.984421882952087,False
+baseline,3,9,14,Bressia,Grenzwelt,Hegemonie,False,True,0.5544799999999999,0.8367459200000003,2171.2447199999997,1.895936,False
+baseline,3,9,14,Hebron,Pilgerwelt,Hegemonie,False,True,0.6454,0.8241653104000004,1141.7870719999996,3.4500883200000034,False
+baseline,3,9,14,Hyperion,Sonderwelt,Neutral,False,True,0.49999999999999994,0.7353931894818934,73.02382752000005,8.799591585514454,True
+baseline,3,9,15,Lusus,Kernwelt,Hegemonie,True,False,0.7342776404413871,1.2665746909931226,0.0,0.0,False
+baseline,3,9,15,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.822,1.2625766366568694,1159.2925999999993,3.7893093254955006,False
+baseline,3,9,15,Maui-Covenant,Templarwelt,Templars,True,False,0.9,1.0524000000000002,1837.3700000000003,0.0,False
+baseline,3,9,15,Marsim,Industriewelt,Hegemonie,True,False,0.6527223595586128,1.3031194923679879,541.0912000000008,18.983346688887252,False
+baseline,3,9,15,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.6819999999999998,1.1420367153977453,2075.986343228734,3.6656681323159206,False
+baseline,3,9,15,Bressia,Grenzwelt,Hegemonie,False,True,0.5347999999999998,0.8526263264000002,1885.6471199999996,5.60826112,False
+baseline,3,9,15,Hebron,Pilgerwelt,Hegemonie,False,True,0.609,0.8090203015680005,1141.7870719999996,3.1740812544000034,False
+baseline,3,9,15,Hyperion,Sonderwelt,Neutral,False,True,0.49999999999999994,0.7511671732185385,0.0,8.67894822608172,True
+baseline,3,9,16,Lusus,Kernwelt,Hegemonie,True,False,0.6850776404413871,1.2441746909931226,0.0,0.0,False
+baseline,3,9,16,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.822,1.3169977057243198,1043.2068399999994,3.4861645794558607,False
+baseline,3,9,16,Maui-Covenant,Templarwelt,Templars,True,False,0.9,1.0709500000000003,1773.2718400000006,0.0,False
+baseline,3,9,16,Marsim,Industriewelt,Hegemonie,True,False,0.6527223595586128,1.3394816653311115,633.8481000000005,21.328678953776272,False
+baseline,3,9,16,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.6621999999999998,1.1580701485845137,1946.748743228734,3.372414681730647,False
+baseline,3,9,16,Bressia,Grenzwelt,Hegemonie,False,True,0.5151199999999998,0.8985555002880002,2254.0471199999997,5.1596002304,False
+baseline,3,9,16,Hebron,Pilgerwelt,Hegemonie,False,True,0.5710000000000001,0.8196588934425605,618.4627519999997,8.844954754048002,False
+baseline,3,9,16,Hyperion,Sonderwelt,Neutral,False,True,0.4830399999999999,0.7636292783959304,253.85599999999994,7.984632367995183,True
+baseline,3,9,17,Lusus,Kernwelt,Hegemonie,True,False,0.6358776404413871,1.2217746909931226,0.0,0.0,False
+baseline,3,9,17,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.822,1.3030132835420545,956.1361719999998,4.385791413099388,False
+baseline,3,9,17,Maui-Covenant,Templarwelt,Templars,True,False,0.8838,1.1293800000000003,2105.864240000001,0.644,False
+baseline,3,9,17,Marsim,Industriewelt,Hegemonie,True,False,0.6353223595586128,1.3318671321046225,334.09290000000055,19.62238463747417,False
+baseline,3,9,17,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.6453999999999998,1.1759629071163407,1695.831143228734,6.966621507192195,False
+baseline,3,9,17,Bressia,Grenzwelt,Hegemonie,False,True,0.4954399999999998,0.9519405100326098,2608.736414236279,7.4323122119680045,False
+baseline,3,9,17,Hebron,Pilgerwelt,Hegemonie,False,True,0.5516000000000001,0.8221623979671557,484.33539199999973,9.167758373724162,False
+baseline,3,9,17,Hyperion,Sonderwelt,Neutral,False,True,0.4651599999999999,0.7977995922639343,198.88569965498658,9.791913811147147,True
+baseline,3,9,18,Lusus,Kernwelt,Hegemonie,True,False,0.586677640441387,1.1993746909931227,0.0,0.0,False
+baseline,3,9,18,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.8021999999999999,1.32085142085869,544.7833799999995,7.898928100051435,False
+baseline,3,9,18,Maui-Covenant,Templarwelt,Templars,True,False,0.8658,1.1560656,2148.8246400000007,0.59248,False
+baseline,3,9,18,Marsim,Industriewelt,Hegemonie,True,False,0.6353223595586128,1.3286977615362525,282.4728000000008,21.916593866476237,False
+baseline,3,9,18,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.6453999999999998,1.1995382449656216,1888.7393032287341,6.409291786616819,False
+baseline,3,9,18,Bressia,Grenzwelt,Hegemonie,False,True,0.47575999999999985,0.997667278811413,2782.4908142362788,10.701727235010564,False
+baseline,3,9,18,Hebron,Pilgerwelt,Hegemonie,False,True,0.5322000000000001,0.8246336221297834,354.7680319999998,9.464737703826229,False
+baseline,3,9,18,Hyperion,Sonderwelt,Neutral,False,True,0.4317999999999999,0.8128946408828196,229.9048868549866,10.018352706255376,True
+baseline,3,9,19,Lusus,Kernwelt,Hegemonie,True,False,0.537477640441387,1.1769746909931227,0.0,0.0,False
+baseline,3,9,19,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.8021999999999999,1.3050101071899949,431.9184199999992,7.267013852047321,False
+baseline,3,9,19,Maui-Covenant,Templarwelt,Templars,True,False,0.8478,1.2064697922191858,2324.017380347243,0.5450816,False
+baseline,3,9,19,Marsim,Industriewelt,Hegemonie,True,False,0.6179223595586129,1.3646478112189988,323.97000000000025,20.16326635715814,False
+baseline,3,9,19,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.6279999999999998,1.2230973157869598,2229.6593032287337,5.896548443687474,False
+baseline,3,9,19,Bressia,Grenzwelt,Hegemonie,False,True,0.47575999999999985,1.0205591060879118,2615.348174236279,12.035189056209715,False
+baseline,3,9,19,Hebron,Pilgerwelt,Hegemonie,False,True,0.5128000000000001,0.8270751483594009,219.63267199999981,9.73795868752013,False
+baseline,3,9,19,Hyperion,Sonderwelt,Neutral,False,True,0.3955599999999999,0.8130405229423643,2.842170943040401e-14,12.69574113160805,True
+baseline,3,9,20,Lusus,Kernwelt,Hegemonie,True,False,0.488277640441387,1.1545746909931227,0.0,0.0,False
+baseline,3,9,20,Tau Ceti,Agrarwelt,Hegemonie,True,False,0.8021999999999999,1.3366732986147951,534.2076199999995,6.685652743883535,False
+baseline,3,9,20,Maui-Covenant,Templarwelt,Templars,True,False,0.8309960973855494,1.2220623570983478,2365.517780347243,0.5014750720000001,False
+baseline,3,9,20,Marsim,Industriewelt,Hegemonie,True,False,0.6179223595586129,1.3415636733642842,413.43240000000026,22.41420504858549,False
+baseline,3,9,20,Qom-Riyadh,Datenwelt,TechnoCore,True,False,0.5907999999999998,1.243107660942591,1791.7241032287338,5.424824568192477,False
+baseline,3,9,20,Bressia,Grenzwelt,Hegemonie,False,True,0.47575999999999985,1.0573555871822908,2775.008174236279,11.072373931712939,False
+baseline,3,9,20,Hebron,Pilgerwelt,Hegemonie,False,True,0.4760000000000002,0.8156893524906489,75.40931199999986,9.98932199251852,False
+baseline,3,9,20,Hyperion,Sonderwelt,Neutral,False,True,0.3776799999999999,0.8116109488292036,2.842170943040401e-14,11.680081841079407,True

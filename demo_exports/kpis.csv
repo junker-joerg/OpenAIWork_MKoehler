@@ -1,0 +1,4 @@
+scenario,run,final_year,final_prosperity,final_stability,final_cash,final_time_debt,total_trade_volume,total_trade_value,event_count
+baseline,1,20,0.7,0.2,0.0,5.27,358.94,12883.04,8
+baseline,2,20,0.86,0.4,361.08,12.37,376.29,14570.28,12
+baseline,3,20,0.81,0.38,0.0,11.68,367.24,13900.21,5
