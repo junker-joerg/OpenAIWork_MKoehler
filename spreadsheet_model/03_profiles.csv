@@ -1,0 +1,34 @@
+world,good,production,consumption
+Lusus,luxus,3.0,0.0
+Lusus,core_daten,2.0,0.0
+Lusus,nahrung,0.0,4.0
+Lusus,energie,0.0,2.0
+Tau Ceti,nahrung,6.0,0.0
+Tau Ceti,biotech,1.5,0.0
+Tau Ceti,energie,0.0,2.0
+Tau Ceti,industrieteile,0.0,2.0
+Maui-Covenant,biotech,2.2,0.0
+Maui-Covenant,nahrung,2.0,0.0
+Maui-Covenant,energie,0.0,1.5
+Maui-Covenant,luxus,0.0,1.0
+Marsim,industrieteile,5.0,0.0
+Marsim,energie,3.0,0.0
+Marsim,rohstoffe,0.0,4.0
+Marsim,nahrung,0.0,2.4
+Qom-Riyadh,core_daten,4.4,0.0
+Qom-Riyadh,luxus,1.1,0.0
+Qom-Riyadh,nahrung,0.0,2.0
+Qom-Riyadh,energie,0.0,2.0
+Bressia,rohstoffe,3.2,0.0
+Bressia,energie,1.4,0.0
+Bressia,nahrung,0.0,2.6
+Bressia,industrieteile,0.0,1.9
+Hebron,luxus,1.3,0.0
+Hebron,nahrung,0.0,2.2
+Hebron,energie,0.0,1.8
+Hebron,biotech,0.0,1.6
+Hyperion,relikte,0.7,0.0
+Hyperion,rohstoffe,1.4,0.0
+Hyperion,nahrung,0.0,1.8
+Hyperion,energie,0.0,2.1
+Hyperion,luxus,0.0,1.4
