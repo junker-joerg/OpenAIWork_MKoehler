@@ -28,6 +28,19 @@ werden.
 Wenn Bokeh nicht verfuegbar ist, bleiben Tabellen und CSV-Exporte nutzbar.
 Die bestehende Matplotlib-Demo in `Juno_Demo.ipynb` ist der visuelle Fallback.
 
+## Begriffe fuer die Erklaerung
+
+- **Stabilitaet:** zusammengefasster Zustand der Welten und Fraktionen.
+- **Prosperitaet:** wirtschaftlicher Wohlstand am Ende des Laufs.
+- **Time Debt:** langfristige Belastung aus langsamen oder riskanten Routen.
+- **Buy-and-Hold:** einfacher Vergleich, bei dem der Startbestand gehalten wird.
+- **Exploration:** der Agent testet eine Aktion, die aktuell nicht den hoechsten
+  Lernwert besitzt.
+
+Die wichtigste Botschaft fuer das Publikum lautet: Ein hoher Endwert allein
+reicht nicht. Eine gute Strategie muss auch Liquiditaet, Ereignisse und Time
+Debt aushalten.
+
 ## 3-Minuten-Story
 
 1. Agentenrat anzeigen: Rendite-Sucher, Reservenwaechter und Opportunist.
@@ -49,6 +62,20 @@ Die bestehende Matplotlib-Demo in `Juno_Demo.ipynb` ist der visuelle Fallback.
 2. Im Flight Recorder eine Kauf-, Verkauf- und Halten-Entscheidung zeigen.
 3. `best_action`, Exploration, Q-Werte und realisierte Belohnung erklaeren.
 4. Die Demo-Capsule exportieren und `DEMO_REPORT.md` oeffnen.
+
+## Sprechertexte als Leitfaden
+
+- **Einstieg:** "Wir beobachten drei lernende Rollen auf demselben Markt."
+- **Vergleich:** "Jetzt veraendern wir nicht die Agenten, sondern nur das
+  Ereignis. So sehen wir, welche Strategie mit Unsicherheit umgehen kann."
+- **Technik:** "Der Flight Recorder zeigt die Entscheidung im Zustand, nicht
+  nur das Ergebnis im Rueckblick."
+- **Abschluss:** "Die Capsule macht den Lauf reproduzierbar und trennt Demo,
+  Daten und technische Begruendung."
+
+Bei Fragen nach Realismus klar abgrenzen: Das Modell ist ein erklaerbarer
+Experimentierraum fuer Strategiefragen, keine reale Wirtschaftsprognose und
+keine Anlageberatung.
 
 ## Reproduzierbarkeit und Ausgabe
 
