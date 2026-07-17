@@ -11,6 +11,20 @@ externer KI-Dienst sind nicht erforderlich.
 3. Optional `bokeh` und `ipywidgets` ueber den Juno-Paketmanager installieren.
 4. Die Zellen von oben nach unten ausfuehren.
 
+## Demo-Modus am Anfang
+
+In der ersten Auswahlzelle stehen drei Profile bereit:
+
+- `einsteiger`: 3 Minuten, 8 Episoden, 8 Jahre, Agentenrat und Szenarien.
+- `agentenvergleich`: 8 Minuten, 20 Episoden, 12 Jahre, zusaetzlich ein
+  kurzer Flight Recorder.
+- `tiefenanalyse`: 20 Minuten, 50 Episoden, 20 Jahre, Routenkarte, voller
+  Flight Recorder und Capsule-Export.
+
+Nach einer Dropdown-Auswahl die Zellen ab `Der Agentenrat` erneut ausfuehren.
+Ohne `ipywidgets` kann `DEMO_MODE` in der ersten Notebook-Zelle direkt gesetzt
+werden.
+
 Wenn Bokeh nicht verfuegbar ist, bleiben Tabellen und CSV-Exporte nutzbar.
 Die bestehende Matplotlib-Demo in `Juno_Demo.ipynb` ist der visuelle Fallback.
 

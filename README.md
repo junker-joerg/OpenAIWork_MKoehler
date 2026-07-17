@@ -86,6 +86,9 @@ für Tabellen und Diagramme genutzt.
 Time-Debt-Routenkarte und Flight Recorder. `juno_showcase.py` erzeugt die
 Bokeh-Ansichten und exportiert die reproduzierbare `demo_capsule/`. Bokeh ist
 optional; ohne Paket bleibt die Matplotlib-/Tabellen-Demo verfuegbar.
+Am Notebook-Anfang kann zwischen `einsteiger`, `agentenvergleich` und
+`tiefenanalyse` gewaehlt werden; dadurch werden Laufzeit und Detailtiefe
+automatisch angepasst.
 
 ## Tests
 

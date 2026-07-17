@@ -67,6 +67,60 @@ EVENT_CATALOG: Dict[str, Dict[str, str]] = {
     "aufstand": {"label": "Aufstand", "key": "aufstand"},
 }
 
+DEMO_MODES: Dict[str, Dict[str, object]] = {
+    "einsteiger": {
+        "label": "Einsteiger \u2013 3 Minuten",
+        "description": "Agentenrat und ein klarer Szenariovergleich.",
+        "episodes": 8,
+        "years": 8,
+        "event_year": 3,
+        "events": ("keines", "farcaster_stoerung", "pilgerboom"),
+        "show_agent_dashboard": True,
+        "show_scenario_dashboard": True,
+        "show_route_map": False,
+        "show_flight_recorder": False,
+        "export_capsule": False,
+        "recorder_rows": 0,
+    },
+    "agentenvergleich": {
+        "label": "Agentenvergleich \u2013 8 Minuten",
+        "description": "Lernkurven, Endwerte und Szenario-Wirkungen vergleichen.",
+        "episodes": 20,
+        "years": 12,
+        "event_year": 3,
+        "events": ("keines", "farcaster_stoerung", "pilgerboom", "ouster_raid"),
+        "show_agent_dashboard": True,
+        "show_scenario_dashboard": True,
+        "show_route_map": False,
+        "show_flight_recorder": True,
+        "export_capsule": False,
+        "recorder_rows": 6,
+    },
+    "tiefenanalyse": {
+        "label": "Technische Tiefenanalyse \u2013 20 Minuten",
+        "description": "Vollstaendige Agenten-, Routen- und Entscheidungsanalyse.",
+        "episodes": 50,
+        "years": 20,
+        "event_year": 5,
+        "events": ("keines", "farcaster_stoerung", "pilgerboom", "ouster_raid"),
+        "show_agent_dashboard": True,
+        "show_scenario_dashboard": True,
+        "show_route_map": True,
+        "show_flight_recorder": True,
+        "export_capsule": True,
+        "recorder_rows": 15,
+    },
+}
+
+
+def demo_mode_config(mode: str = "einsteiger") -> Dict[str, object]:
+    """Return the notebook settings for one presentation duration."""
+
+    if mode not in DEMO_MODES:
+        choices = ", ".join(DEMO_MODES)
+        raise ValueError(f"Unbekannter Demo-Modus: {mode}. Erlaubt: {choices}")
+    return dict(DEMO_MODES[mode])
+
 
 def bokeh_status() -> Dict[str, object]:
     return {
@@ -393,6 +447,7 @@ def export_demo_capsule(showcase: Mapping[str, object], output_dir: str = "demo_
 __all__ = [
     "AGENT_ROLES",
     "BOKEH_AVAILABLE",
+    "DEMO_MODES",
     "EVENT_CATALOG",
     "agent_council_table",
     "bokeh_agent_dashboard",
@@ -402,6 +457,7 @@ __all__ = [
     "build_showcase",
     "configure_bokeh_notebook",
     "compose_scenario",
+    "demo_mode_config",
     "evaluation_summary",
     "explain_decision",
     "export_demo_capsule",

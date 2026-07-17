@@ -4,9 +4,11 @@ from pathlib import Path
 
 from juno_showcase import (
     BOKEH_AVAILABLE,
+    DEMO_MODES,
     agent_council_table,
     build_showcase,
     compose_scenario,
+    demo_mode_config,
     export_demo_capsule,
     flight_recorder_table,
     scenario_comparison,
@@ -14,6 +16,18 @@ from juno_showcase import (
 
 
 class JunoShowcaseTests(unittest.TestCase):
+    def test_demo_modes_control_runtime_and_sections(self) -> None:
+        self.assertEqual(set(DEMO_MODES), {"einsteiger", "agentenvergleich", "tiefenanalyse"})
+        beginner = demo_mode_config("einsteiger")
+        deep = demo_mode_config("tiefenanalyse")
+
+        self.assertLess(beginner["episodes"], deep["episodes"])
+        self.assertFalse(beginner["show_route_map"])
+        self.assertTrue(deep["show_route_map"])
+        self.assertTrue(deep["export_capsule"])
+        with self.assertRaises(ValueError):
+            demo_mode_config("unbekannt")
+
     def test_showcase_contains_all_story_products(self) -> None:
         showcase = build_showcase(episodes=2, years=4, seed=7)
 

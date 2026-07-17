@@ -72,3 +72,7 @@ Notebooks notwendig.
 `Juno_Story_Capsule.ipynb` buendelt Agentenrat, Scenario Composer, Time-Debt-
 Routenkarte, Flight Recorder und reproduzierbaren Export. Die drei
 Vorfuehrungsvarianten stehen in `DEMO_RUNBOOK.md`.
+
+Die Auswahlzelle am Notebook-Anfang bietet `einsteiger`, `agentenvergleich`
+und `tiefenanalyse`. Sie steuert Episoden, Simulationsjahre, sichtbare
+Abschnitte und den Capsule-Export.
