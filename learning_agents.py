@@ -112,6 +112,12 @@ class Agent:
             return self.rng.choice(allowed)
         return _best(values, allowed, self.rng)
 
+    def action_values(self, state: Sequence[int]) -> Dict[str, float]:
+        """Return the current action values for an explainable decision log."""
+
+        values = self.bandit_values if self.algorithm == "bandit" else _values(self.q_table, state)
+        return {action: float(values[action]) for action in ACTIONS}
+
     def sarsa_update(
         self,
         state: Sequence[int],
@@ -328,6 +334,7 @@ def run_episode(
     seed: int = 7,
     learn: bool = True,
     episode: int = 1,
+    decision_log: Optional[List[Dict[str, object]]] = None,
 ) -> List[Dict[str, object]]:
     if years < 1:
         raise ValueError("years muss mindestens 1 sein")
@@ -345,6 +352,7 @@ def run_episode(
         for agent in agents
     }
     previous: Dict[str, Tuple[Tuple[int, ...], str, float, float]] = {}
+    previous_log: Dict[str, int] = {}
     actions = {
         agent.name: {action: 0 for action in ACTIONS} for agent in agents
     }
@@ -375,6 +383,8 @@ def run_episode(
                 old_state, old_action, old_value, old_cost = previous[agent.name]
                 reward = current_value - old_value - old_cost
                 position["reward"] = float(position["reward"]) + reward
+                if decision_log is not None and agent.name in previous_log:
+                    decision_log[previous_log[agent.name]]["realized_reward"] = round(reward, 6)
                 _update_transition(
                     agent,
                     old_state,
@@ -386,6 +396,11 @@ def run_episode(
                 )
 
             action = agent.choose(state, allowed, explore=learn)
+            values = agent.action_values(state)
+            best_value = max(values[action_name] for action_name in allowed)
+            best_action = next(
+                action_name for action_name in allowed if values[action_name] == best_value
+            )
             new_cash, new_inventory, traded, invalid = _execute_trade(
                 cash, inventory, price, action
             )
@@ -403,6 +418,34 @@ def run_episode(
                 new_cash + new_inventory * price,
                 risk_cost,
             )
+            if decision_log is not None:
+                decision_log.append(
+                    {
+                        "episode": episode,
+                        "year": sim.tick,
+                        "agent": agent.name,
+                        "algorithm": agent.algorithm,
+                        "action": action,
+                        "best_action": best_action,
+                        "exploratory": bool(action != best_action),
+                        "price": round(price, 6),
+                        "stability": round(snapshot["stability"], 6),
+                        "time_debt": round(snapshot["time_debt"], 6),
+                        "event_count": int(snapshot["event_count"]),
+                        "hyperion_stock": round(snapshot["stock"], 6),
+                        "cash_before": round(cash, 6),
+                        "inventory_before": inventory,
+                        "cash_after": round(new_cash, 6),
+                        "inventory_after": new_inventory,
+                        "q_halten": round(values["halten"], 6),
+                        "q_kaufen": round(values["kaufen"], 6),
+                        "q_verkaufen": round(values["verkaufen"], 6),
+                        "risk_cost": round(risk_cost, 6),
+                        "invalid_action": invalid,
+                        "realized_reward": None,
+                    }
+                )
+                previous_log[agent.name] = len(decision_log) - 1
 
     if final_snapshot is None or first_price is None:
         raise RuntimeError("Episode lieferte keinen Markt-Snapshot")
@@ -416,6 +459,8 @@ def run_episode(
             old_state, old_action, old_value, old_cost = previous[agent.name]
             terminal_reward = final_value - old_value - old_cost
             position["reward"] = float(position["reward"]) + terminal_reward
+            if decision_log is not None and agent.name in previous_log:
+                decision_log[previous_log[agent.name]]["realized_reward"] = round(terminal_reward, 6)
             if learn:
                 agent.terminal_update(old_state, old_action, terminal_reward)
         agent.finish_episode(learn)

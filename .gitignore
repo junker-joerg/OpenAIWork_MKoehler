@@ -2,3 +2,4 @@ __pycache__/
 *.py[cod]
 agent_memory.json
 demo_exports/
+demo_capsule/

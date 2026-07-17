@@ -80,6 +80,13 @@ Die Agenten-Demo läuft ebenfalls lokal/offline. Sie verwendet nur die
 Standardbibliothek für das Lernen; Pandas und Matplotlib werden im Notebook
 für Tabellen und Diagramme genutzt.
 
+## Story Capsule und Bokeh
+
+`Juno_Story_Capsule.ipynb` buendelt Agentenrat, Scenario Composer,
+Time-Debt-Routenkarte und Flight Recorder. `juno_showcase.py` erzeugt die
+Bokeh-Ansichten und exportiert die reproduzierbare `demo_capsule/`. Bokeh ist
+optional; ohne Paket bleibt die Matplotlib-/Tabellen-Demo verfuegbar.
+
 ## Tests
 
 ```bash

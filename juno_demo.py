@@ -50,7 +50,7 @@ SCENARIOS: Dict[str, Dict[str, object]] = {
 def environment_report() -> pd.DataFrame:
     """Return a compact package/path report for the first notebook cell."""
 
-    packages = ["pandas", "matplotlib", "ipywidgets", "pyarrow"]
+    packages = ["pandas", "matplotlib", "ipywidgets", "pyarrow", "bokeh"]
     rows = [{"item": "Python", "available": True, "detail": platform.python_version()}]
     rows.append({"item": "Working directory", "available": True, "detail": str(Path.cwd())})
     for package in packages:
@@ -101,6 +101,7 @@ def run_simulation(
     trade_intensity: float = 1.0,
     faction_strength: float = 1.0,
     scenario: str = "baseline",
+    forced_events: Optional[Mapping[int, str]] = None,
 ) -> Dict[str, pd.DataFrame]:
     """Run a compact experiment and return analysis-ready DataFrames."""
 
@@ -111,7 +112,9 @@ def run_simulation(
 
     frames = _empty_frames()
     scenario_data = SCENARIOS[scenario]
-    forced_events = dict(scenario_data["forced_events"])
+    selected_events = dict(
+        scenario_data["forced_events"] if forced_events is None else forced_events
+    )
     base_seed = int(scenario_data["seed"]) if seed == DEFAULT_SEED else seed
     yearly_rows = []
     world_rows = []
@@ -127,7 +130,7 @@ def run_simulation(
             event_chance=event_chance,
             trade_intensity=trade_intensity,
             faction_strength=faction_strength,
-            scenario_events=forced_events,
+            scenario_events=selected_events,
         )
         sim = HyperionEconomySim(config)
 

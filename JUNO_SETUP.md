@@ -51,6 +51,14 @@ Projektordner.
 - Danach `Juno_AI_Agents_Demo.ipynb`: Training starten, Lernkurve zeigen,
   neue Marktverläufe bewerten und die JSON-Datei demonstrieren.
 
+## Bokeh in Juno
+
+Bokeh ist fuer diese Demo eine optionale lokale Notebook-Ausgabe. Im Juno-
+Paketmanager nach `bokeh` suchen und installieren. Die Story-Capsule prueft
+`BOKEH_AVAILABLE` automatisch und zeigt bei fehlendem Paket die Daten als
+Tabellen an. Fuer eine Vorfuehrung ohne Paketinstallation ist kein Umbau des
+Notebooks notwendig.
+
 ## Fehlerbehebung
 
 - Bei fehlenden Widgets die Parameterzellen verwenden.
@@ -58,3 +66,9 @@ Projektordner.
 - Falls Importe fehlschlagen, prüfen, ob `juno_demo.py`, `learning_agents.py`,
   `trade_sim.py` und `spreadsheet_model/` im gleichen Ordner liegen.
 - Bei einer Live-Demo zunächst mit den festen Standard-Seeds arbeiten.
+
+## Story Capsule
+
+`Juno_Story_Capsule.ipynb` buendelt Agentenrat, Scenario Composer, Time-Debt-
+Routenkarte, Flight Recorder und reproduzierbaren Export. Die drei
+Vorfuehrungsvarianten stehen in `DEMO_RUNBOOK.md`.
