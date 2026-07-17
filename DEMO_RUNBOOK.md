@@ -47,7 +47,7 @@ Zum Beenden in einer neuen Notebook-Zelle:
 
 ```python
 from juno_webapp import stop_juno_webserver
-stop_juno_webserver(web_process)
+stop_juno_webserver(web_server)
 ```
 
 Wenn Bokeh nicht verfuegbar ist, bleiben Tabellen und CSV-Exporte nutzbar.

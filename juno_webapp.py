@@ -9,10 +9,8 @@ has started.
 from __future__ import annotations
 
 import html
-import os
-import subprocess
-import sys
-from pathlib import Path
+import threading
+from dataclasses import dataclass
 from typing import Mapping, Optional, Tuple
 
 import pandas as pd
@@ -34,10 +32,13 @@ from juno_showcase import (
 
 
 if BOKEH_AVAILABLE:  # Keep importing this module safe on a minimal desktop.
+    from bokeh.application import Application
+    from bokeh.application.handlers.function import FunctionHandler
     from bokeh.document import Document
     from bokeh.io import curdoc
     from bokeh.layouts import column, row
     from bokeh.models import Button, Div, Select, Spinner
+    from bokeh.server.server import Server
 
 
 def _require_bokeh() -> None:
@@ -45,6 +46,21 @@ def _require_bokeh() -> None:
         raise RuntimeError(
             "Bokeh ist nicht installiert. In Juno zuerst das Paket 'bokeh' installieren."
         )
+
+
+@dataclass
+class JunoWebServerHandle:
+    """Thread-backed server handle; unlike subprocesses this works on iOS."""
+
+    server: object
+    thread: threading.Thread
+    url: str
+
+    def stop(self) -> None:
+        io_loop = self.server.io_loop
+        io_loop.add_callback(self.server.stop)
+        io_loop.add_callback(io_loop.stop)
+        self.thread.join(timeout=2.0)
 
 
 def _number(value: object) -> str:
@@ -227,49 +243,38 @@ def modify_doc(doc: "Document") -> None:
 
 def start_juno_webserver(
     *, port: int = 5006, address: str = "127.0.0.1"
-) -> Tuple[subprocess.Popen, str]:
-    """Start the local Bokeh server from a notebook and return process plus URL."""
+) -> Tuple[JunoWebServerHandle, str]:
+    """Start Bokeh in-process so the launcher is compatible with iOS/Juno."""
 
     _require_bokeh()
-    app_path = Path(__file__).resolve()
-    command = [
-        sys.executable,
-        "-m",
-        "bokeh",
-        "serve",
-        str(app_path),
-        "--address",
-        address,
-        "--port",
-        str(port),
-        "--allow-websocket-origin",
-        f"localhost:{port}",
-        "--allow-websocket-origin",
-        f"127.0.0.1:{port}",
-        "--log-level",
-        "warning",
-    ]
-    environment = os.environ.copy()
-    environment["HYPERION_BOKEH_APP"] = "1"
-    process = subprocess.Popen(
-        command,
-        cwd=str(app_path.parent),
-        env=environment,
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
+    application = Application(FunctionHandler(modify_doc))
+    server = Server(
+        {"/": application},
+        address=address,
+        port=port,
+        allow_websocket_origin=[f"localhost:{port}", f"127.0.0.1:{port}"],
     )
-    return process, f"http://localhost:{port}/juno_webapp"
+    server.start()
+    url = f"http://localhost:{port}/"
+    thread = threading.Thread(
+        target=server.io_loop.start,
+        name="hyperion-bokeh-server",
+        daemon=True,
+    )
+    thread.start()
+    return JunoWebServerHandle(server, thread, url), url
 
 
-def stop_juno_webserver(process: Optional[subprocess.Popen]) -> None:
+def stop_juno_webserver(process: Optional[JunoWebServerHandle]) -> None:
     """Stop a server previously returned by start_juno_webserver."""
 
-    if process is not None and process.poll() is None:
-        process.terminate()
+    if process is not None:
+        process.stop()
 
 
-if BOKEH_AVAILABLE and os.environ.get("HYPERION_BOKEH_APP") == "1":
-    modify_doc(curdoc())
-
-
-__all__ = ["modify_doc", "start_juno_webserver", "stop_juno_webserver"]
+__all__ = [
+    "JunoWebServerHandle",
+    "modify_doc",
+    "start_juno_webserver",
+    "stop_juno_webserver",
+]

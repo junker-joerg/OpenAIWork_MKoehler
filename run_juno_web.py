@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 
-from juno_webapp import start_juno_webserver
+from juno_webapp import start_juno_webserver, stop_juno_webserver
 
 
 def main() -> None:
@@ -12,13 +12,13 @@ def main() -> None:
     parser.add_argument("--port", type=int, default=5006)
     parser.add_argument("--address", default="127.0.0.1")
     args = parser.parse_args()
-    process, url = start_juno_webserver(port=args.port, address=args.address)
+    server, url = start_juno_webserver(port=args.port, address=args.address)
     print(f"Hyperion Web-UI: {url}")
     print("Zum Beenden Strg+C druecken.")
     try:
-        process.wait()
+        server.thread.join()
     except KeyboardInterrupt:
-        process.terminate()
+        stop_juno_webserver(server)
 
 
 if __name__ == "__main__":
