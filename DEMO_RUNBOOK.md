@@ -25,6 +25,31 @@ Nach einer Dropdown-Auswahl die Zellen ab `Der Agentenrat` erneut ausfuehren.
 Ohne `ipywidgets` kann `DEMO_MODE` in der ersten Notebook-Zelle direkt gesetzt
 werden.
 
+## Web-UI ohne Notebook-Scroll
+
+Die Story-Capsule kann statt der langen Zellenausgabe eine kompakte lokale
+Web-UI starten. In der ersten Notebook-Zelle `START_WEB_UI = True` setzen und
+die Zelle ausfuehren. Danach den angezeigten Link oeffnen.
+
+Alternativ ausserhalb des Notebooks:
+
+```bash
+python run_juno_web.py --port 5006
+```
+
+Die Web-UI ist fuer iPad-Landscape ausgelegt: links stehen nur Modus, Event,
+Jahr, Seed und Startknopf; rechts werden Kennzahlen, Agentenvergleich,
+Szenarien, Routenkarte und Flight Recorder in einem festen Arbeitsbereich
+angezeigt. Die Simulation bleibt lokal auf dem iPad; es wird kein externer
+Webdienst benoetigt.
+
+Zum Beenden in einer neuen Notebook-Zelle:
+
+```python
+from juno_webapp import stop_juno_webserver
+stop_juno_webserver(web_process)
+```
+
 Wenn Bokeh nicht verfuegbar ist, bleiben Tabellen und CSV-Exporte nutzbar.
 Die bestehende Matplotlib-Demo in `Juno_Demo.ipynb` ist der visuelle Fallback.
 

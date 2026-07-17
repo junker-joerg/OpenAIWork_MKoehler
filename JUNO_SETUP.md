@@ -73,6 +73,12 @@ Notebooks notwendig.
 Routenkarte, Flight Recorder und reproduzierbaren Export. Die drei
 Vorfuehrungsvarianten stehen in `DEMO_RUNBOOK.md`.
 
+Fuer eine Darstellung ohne lange Notebook-Seite kann in der ersten Zelle
+`START_WEB_UI = True` gesetzt werden. Juno startet dann `juno_webapp.py` als
+lokalen Bokeh-Server und zeigt einen Link. Der Kommandozeilen-Einstieg ist
+`run_juno_web.py`. Die Web-UI ist fuer Landscape ausgelegt und zeigt die
+Steuerung links sowie die wichtigsten Ergebnisse rechts.
+
 Die Auswahlzelle am Notebook-Anfang bietet `einsteiger`, `agentenvergleich`
 und `tiefenanalyse`. Sie steuert Episoden, Simulationsjahre, sichtbare
 Abschnitte und den Capsule-Export.

@@ -67,6 +67,8 @@ Ungültige Parameter werden mit einer erklärenden Fehlermeldung abgewiesen.
 - `juno_demo.py` (Simulation, KPIs, Diagramme und CSV-Export)
 - `run_juno_demo.py` (Ein-Klick-/Shortcut-Einstieg)
 - `Juno_AI_Agents_Demo.ipynb` (lokale lernende Agenten mit Q-Learning)
+- `juno_webapp.py` (kompakte lokale Bokeh-Web-UI ohne lange Notebook-Ausgabe)
+- `run_juno_web.py` (direkter Start des lokalen Webservers)
 - `learning_agents.py` (SARSA, Dyna-Q, Bandit, Hyperion-Integration und JSON-Gedächtnis)
 - `run_juno_agents.py` (Ein-Klick-/Shortcut-Einstieg für Agententraining)
 - `JUNO_SETUP.md` (Einrichtung und Präsentationsablauf)
@@ -89,6 +91,8 @@ optional; ohne Paket bleibt die Matplotlib-/Tabellen-Demo verfuegbar.
 Am Notebook-Anfang kann zwischen `einsteiger`, `agentenvergleich` und
 `tiefenanalyse` gewaehlt werden; dadurch werden Laufzeit und Detailtiefe
 automatisch angepasst.
+Optional startet `START_WEB_UI = True` aus Juno eine kompakte lokale Bokeh-Web-
+UI ohne lange Notebook-Ausgabe. `run_juno_web.py` ist der direkte Einstieg.
 
 ## Tests
 

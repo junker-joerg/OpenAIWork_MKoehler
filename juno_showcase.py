@@ -318,7 +318,7 @@ def _require_bokeh() -> None:
         )
 
 
-def bokeh_agent_dashboard(showcase: Mapping[str, object]):
+def bokeh_agent_dashboard(showcase: Mapping[str, object], *, height: int = 330):
     """Create the interactive agent council dashboard."""
 
     _require_bokeh()
@@ -326,6 +326,7 @@ def bokeh_agent_dashboard(showcase: Mapping[str, object]):
     evaluation = showcase["evaluation"]
     colors = {"Profit-Scout": "#2563eb", "Reserve-Keeper": "#059669", "Hyperion-Speculator": "#d97706"}
     reward_plot = figure(title="Agentenrat: Lernfortschritt", height=330, sizing_mode="stretch_width", tools="pan,wheel_zoom,box_zoom,reset,save")
+    reward_plot.height = height
     for agent, frame in history.groupby("agent"):
         source = ColumnDataSource(frame)
         reward_plot.line("episode", "total_reward", source=source, line_width=2, color=colors.get(agent, "#64748b"), legend_label=agent)
@@ -335,6 +336,7 @@ def bokeh_agent_dashboard(showcase: Mapping[str, object]):
     reward_plot.yaxis.axis_label = "Reward"
 
     value_plot = figure(title="Neue Marktverläufe vs. Buy-and-Hold", height=330, sizing_mode="stretch_width", tools="pan,wheel_zoom,box_zoom,reset,save")
+    value_plot.height = height
     for agent, frame in evaluation.groupby("agent"):
         source = ColumnDataSource(frame)
         value_plot.scatter("episode", "final_value", source=source, marker="circle", size=9, color=colors.get(agent, "#64748b"), legend_label=agent)
@@ -347,7 +349,7 @@ def bokeh_agent_dashboard(showcase: Mapping[str, object]):
     return column(row(reward_plot, value_plot, sizing_mode="stretch_width"), sizing_mode="stretch_width")
 
 
-def bokeh_scenario_dashboard(scenarios: pd.DataFrame):
+def bokeh_scenario_dashboard(scenarios: pd.DataFrame, *, height: int = 380):
     _require_bokeh()
     source = ColumnDataSource(scenarios)
     plot = figure(
@@ -360,13 +362,15 @@ def bokeh_scenario_dashboard(scenarios: pd.DataFrame):
     plot.vbar(x="event", top="final_stability", width=0.35, source=source, color="#2563eb", legend_label="Stabilität")
     plot.add_tools(HoverTool(tooltips=[("Event", "@event"), ("Stabilität", "@final_stability"), ("Wohlstand", "@final_prosperity"), ("Time Debt", "@final_time_debt")]))
     plot.xaxis.major_label_orientation = 0.8
+    plot.height = height
     plot.yaxis.axis_label = "Wert"
     return plot
 
 
-def bokeh_route_map(routes: pd.DataFrame, nodes: pd.DataFrame):
+def bokeh_route_map(routes: pd.DataFrame, nodes: pd.DataFrame, *, height: int = 430):
     _require_bokeh()
     plot = figure(title="Hyperion-Handelsrouten und Time Debt", height=430, sizing_mode="stretch_width", tools="pan,wheel_zoom,reset,save")
+    plot.height = height
     if not nodes.empty:
         node_source = ColumnDataSource(nodes)
         node_lookup = nodes.set_index("name")
