@@ -26,6 +26,7 @@ from learning_agents import (
 
 try:  # Bokeh is optional on desktop, but supported by Juno.
     from bokeh.embed import file_html
+    from bokeh.io import output_notebook
     from bokeh.layouts import column, row
     from bokeh.models import ColumnDataSource, HoverTool
     from bokeh.plotting import figure
@@ -76,6 +77,15 @@ def bokeh_status() -> Dict[str, object]:
             else "Bokeh nicht installiert — Matplotlib-/Tabellen-Fallback verwenden."
         ),
     }
+
+
+def configure_bokeh_notebook() -> bool:
+    """Enable inline Bokeh output for Jupyter/Juno notebooks."""
+
+    if not BOKEH_AVAILABLE:
+        return False
+    output_notebook(resources=INLINE, hide_banner=True)
+    return True
 
 
 def build_showcase(
@@ -273,7 +283,7 @@ def bokeh_agent_dashboard(showcase: Mapping[str, object]):
     value_plot = figure(title="Neue Marktverläufe vs. Buy-and-Hold", height=330, sizing_mode="stretch_width", tools="pan,wheel_zoom,box_zoom,reset,save")
     for agent, frame in evaluation.groupby("agent"):
         source = ColumnDataSource(frame)
-        value_plot.circle("episode", "final_value", source=source, size=9, color=colors.get(agent, "#64748b"), legend_label=agent)
+        value_plot.scatter("episode", "final_value", source=source, marker="circle", size=9, color=colors.get(agent, "#64748b"), legend_label=agent)
     benchmark = evaluation[["episode", "benchmark_value"]].drop_duplicates()
     value_plot.line("episode", "benchmark_value", source=ColumnDataSource(benchmark), line_dash="dashed", line_width=2, color="#64748b", legend_label="Buy-and-Hold")
     value_plot.add_tools(HoverTool(tooltips=[("Episode", "@episode"), ("Endwert", "@final_value{0.00}"), ("Benchmark", "@benchmark_value{0.00}"), ("Excess", "@excess_return{0.00}")]))
@@ -317,7 +327,7 @@ def bokeh_route_map(routes: pd.DataFrame, nodes: pd.DataFrame):
                 route_source = ColumnDataSource(segments)
                 plot.segment("x0", "y0", "x1", "y1", source=route_source, line_width=2, alpha=0.45, color="#64748b")
                 plot.add_tools(HoverTool(tooltips=[("Route", "@source → @target"), ("Volumen", "@trade_volume{0.00}"), ("Transportkosten", "@avg_transport_cost{0.00}"), ("Ziel-Time Debt", "@target_time_debt{0.00}")]))
-        plot.circle("x", "y", source=node_source, size=14, color="#2563eb")
+        plot.scatter("x", "y", source=node_source, marker="circle", size=14, color="#2563eb")
         plot.add_tools(HoverTool(tooltips=[("Welt", "@name"), ("Stabilität", "@stability{0.00}"), ("Time Debt", "@time_debt{0.00}"), ("Farcaster", "@farcaster")]))
         plot.xaxis.axis_label = "Kern → Grenze → Peripherie"
         plot.yaxis.axis_label = "Stabilitätsniveau"
@@ -390,6 +400,7 @@ __all__ = [
     "bokeh_scenario_dashboard",
     "bokeh_status",
     "build_showcase",
+    "configure_bokeh_notebook",
     "compose_scenario",
     "evaluation_summary",
     "explain_decision",
